@@ -108,3 +108,17 @@ module.exports={
     AdminProductsRoute
 }
 
+// {
+//     "title":"Beco Woden Bamboo Toothbrash",
+//      "image":"https://m.media-amazon.com/images/I/51DW3BkdanL._AC_UL480_FMwebp_QL65_.jpg",
+//      "brand":"Beco",
+//      "category":"general",
+//      "RatingCount":477,
+//      "Rating":4,
+//      "price":240,
+//      "off":5,
+//      "madein":"India"
+   
+  
+   
+//  }
