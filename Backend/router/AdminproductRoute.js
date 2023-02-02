@@ -66,7 +66,7 @@ AdminProductsRoute.patch("/update/:id",async(req,res)=>{
 
             console.log(err)
 
-            res.send("please check you are authorized or not to update")
+            res.send("please check you are authorized or not to updat")
         }
    
 })
