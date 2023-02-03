@@ -1,4 +1,6 @@
 .main_nav{
+position: sticky;
+top: 0;
 
     height: 16vh;
 display: flex;
@@ -10,9 +12,10 @@ align-items: center;
     padding-right: 2%;
 }
 .nav_left_section{
-  background-color: #05e438;
-  width: 6%;
-  height: 80%;
+  background-color: #ffffff;
+  width: 60px;
+  height:60px;
+  box-shadow: 1px 8px 2px 0px rgba(17,242,21,1);
   
   border-radius: 50%;
   display: flex;
@@ -20,8 +23,8 @@ align-items: center;
   justify-content: center;
 }
 .nav_logo{
-   width: 63%;
-   height: 50%;
+   width: 70%;
+   
 }
 .nav_company_name{
     color: white;
@@ -32,4 +35,59 @@ align-items: center;
 .nav_serach_section{
 
     margin-left: 10%;
+}
+
+.nav_right_section{
+    display: flex;
+    margin-left: 4%;
+ 
+    width: 50%;
+justify-content: space-between;
+}
+.nav_right_list{
+    display: flex;
+    margin-left: 2%;
+
+}
+.nav_right_list>li{
+    list-style-type: none;
+ display: flex;
+  width: 33%;
+  margin-right: 5%;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  position: relative;
+}
+.nav_right_list>li:hover{
+    cursor: pointer;
+}
+.nav_right_list>li::after{
+   
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(17,242,21,1);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.nav_right_list>li:hover::after{
+    
+    transform: scaleX(1);
+  transform-origin: bottom left;
+}
+.nav_bag{
+    width: 29%;
+    margin-left: 15%;
+   
+}
+
+.nav_account{
+    width: 27%;
+border-radius: 80%;
+margin-right: 4%;
 }

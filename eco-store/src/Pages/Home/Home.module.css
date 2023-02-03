@@ -1,0 +1,67 @@
+.home_main{
+  display: flex;
+ background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+;
+    width: 100%;
+}
+.home_left_bar{
+    height: 60vh;
+    width: 10%;
+   position:fixed;
+background-image: url(../../images/tree.png);
+
+
+}
+.home_right_main{
+    width: 70%;
+  
+    margin-left: 13%;
+}
+.home_heading_box{
+
+ width: 48%;
+ margin: auto;
+ border-radius: 2.1rem;
+    background-image: url(../../images/bark.png);
+    margin-bottom: 1%;
+    margin-top: 2%;
+}
+.home_heading_slogan{
+    font-size: 1.1rem;
+  font-style:initial;
+color: rgb(255, 255, 255);
+
+  font-weight: 700;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.home_right_slider{
+border: 2px solid black;
+    background-image: url(../../images/slide_1.jpg);
+    width: 80%;
+    height: 60vh;
+    border-radius: 1.2rem;
+margin-left: 8%;
+ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;;
+    background-size: 100% 100%;
+ animation: changeImage 20s  2s  alternate infinite;
+}
+@keyframes changeImage {
+    0%{
+        background-image: url(../../images/slide_1.jpg);
+    }
+    25%{
+        background-image: url(../../images/slide_2.jpg);
+    }
+    50%{
+        background-image: url(../../images/slide_3.jpg);
+    }
+    75%{
+        background-image: url(../../images/slide_4.jpg);
+    }
+    100%{
+        background-image: url(../../images/slide_5.png);
+    }
+}

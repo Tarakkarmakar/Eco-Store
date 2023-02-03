@@ -2,7 +2,9 @@
 import css from "./Navbar.module.css"
 import { Input,InputGroup,InputRightElement,Button } from '@chakra-ui/react'
 import logo from "../../images/logo.png"
+import bag from "../../images/bag.png"
 import { Search2Icon } from '@chakra-ui/icons'
+import account  from "../../images/account.jpg"
 const Navbar = () => {
 
 
@@ -42,13 +44,17 @@ const Navbar = () => {
 
 <div className={css.nav_right_section}>
 
-  <ul>
+  <ul className={css.nav_right_list}>
 
+    
+    <li> <img className={css.nav_account} src={account}  /> <p> SignUp/login</p>
+   </li>
+   
+    <li>Become a Partner</li>
     <li>
-
+<img  className={css.nav_bag} src={bag} alt="" />
+<p>Bag</p>
     </li>
-    <li></li>
-    <li></li>
   </ul>
 </div>
 
