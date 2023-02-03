@@ -3,7 +3,7 @@ import css from "./Navbar.module.css"
 import { Input,InputGroup,InputRightElement,Button } from '@chakra-ui/react'
 import logo from "../../images/logo.png"
 import bag from "../../images/bag.png"
-import { Search2Icon } from '@chakra-ui/icons'
+import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import account  from "../../images/account.jpg"
 const Navbar = () => {
 
@@ -47,7 +47,7 @@ const Navbar = () => {
   <ul className={css.nav_right_list}>
 
     
-    <li> <img className={css.nav_account} src={account}  /> <p> SignUp/login</p>
+    <li> <img className={css.nav_account} src={account}  /> <p> SignUp/Login</p>
    </li>
    
     <li>Become a Partner</li>
@@ -56,6 +56,10 @@ const Navbar = () => {
 <p>Bag</p>
     </li>
   </ul>
+</div>
+
+<div className={css.nav_hamberger}>
+  <HamburgerIcon h="2.3rem" w="2.2rem"/>
 </div>
 
       

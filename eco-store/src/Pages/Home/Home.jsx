@@ -16,8 +16,17 @@ const Home = () => {
 
         </div>
 
-        <div className={csshome.shop_kitchen_box}>
-          <h2>Shop kitchen </h2>
+        <div className={csshome.products_category}>
+          <span>Eco-Kitchen</span>
+       <div ></div>
+
+       <span>Eco-Plants</span>
+       <div></div>
+
+       <span>Eco-fashion</span>
+       <div></div>
+       
+
         </div>
       </div>
     </div>

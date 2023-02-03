@@ -1,13 +1,13 @@
 .main_nav{
 position: sticky;
 top: 0;
-
+border: 1px solid black;
     height: 16vh;
 display: flex;
     width: 100%;
 align-items: center;
-    background-image: url(../../images/bark.png);
-
+  
+background-color: green;
     padding-left: 5%;
     padding-right: 2%;
 }
@@ -90,4 +90,50 @@ justify-content: space-between;
     width: 27%;
 border-radius: 80%;
 margin-right: 4%;
+}
+.nav_hamberger{
+    display: none;
+
+}
+@media all and (min-width: 501px) and (max-width: 1030px) {
+ 
+    .main_nav{
+        height: 14vh;
+    }
+    .nav_right_section{
+        display: none;
+        width: 0%;
+      
+    }
+    .nav_hamberger{
+        display: block;
+       margin-left: 40%;
+
+        
+    }
+    .nav_left_section{
+        height: 50px;
+    width: 70px;
+    }
+
+}
+@media all and (min-width: 0px) and (max-width: 500px) {
+
+.nav_hamberger{
+    display: block;
+    
+}
+.main_nav{
+    height: 10vh;
+}
+.nav_right_section{
+    display: none;
+}
+.nav_serach_section{
+    margin-right: 3%;
+}
+.nav_left_section{
+    height: 30px;
+width: 50px;
+}
 }
