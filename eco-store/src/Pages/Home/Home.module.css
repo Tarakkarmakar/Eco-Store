@@ -131,6 +131,11 @@ font-size: 70%;
         width: 75%;
         margin-bottom: 5%;
          }
+         .Eco_kitchen_box{
+          
+            grid-template-columns: 1fr 1fr;
+            
+            }
 }
 @media all and (min-width: 0px) and (max-width:399px) {
 
@@ -141,4 +146,9 @@ font-size: 70%;
         font-size: 60%;
         
              }
+             .Eco_kitchen_box{
+          
+                grid-template-columns: 1fr ;
+                
+                }
 }
