@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/eco-store/static/css/main.4e8f8a48.css",
+    "main.js": "/eco-store/static/js/main.551f4cbc.js",
+    "static/js/787.bf84bd8a.chunk.js": "/eco-store/static/js/787.bf84bd8a.chunk.js",
+    "static/media/slide_3.jpg": "/eco-store/static/media/slide_3.dd7bfd71bdbdb3ea918e.jpg",
+    "static/media/slide_5.png": "/eco-store/static/media/slide_5.241d4b692d9c521c9196.png",
+    "static/media/tree.png": "/eco-store/static/media/tree.d008813abe02e1bf1a0f.png",
+    "static/media/slide_1.jpg": "/eco-store/static/media/slide_1.765a64556aae70bbeccf.jpg",
+    "static/media/slide_4.jpg": "/eco-store/static/media/slide_4.c3b4a775730bb00c40e6.jpg",
+    "static/media/bark.png": "/eco-store/static/media/bark.6725643dffe9ff8299f1.png",
+    "static/media/bag.png": "/eco-store/static/media/bag.751a9ce5266d02024248.png",
+    "static/media/slide_2.jpg": "/eco-store/static/media/slide_2.9b13bb73bbb71b826b62.jpg",
+    "static/media/account.jpg": "/eco-store/static/media/account.935cfacfe2adca691122.jpg",
+    "static/media/logo.png": "/eco-store/static/media/logo.d2a4b25a389dcb503e74.png",
+    "static/media/logo.svg": "/eco-store/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/eco-store/index.html",
+    "main.4e8f8a48.css.map": "/eco-store/static/css/main.4e8f8a48.css.map",
+    "main.551f4cbc.js.map": "/eco-store/static/js/main.551f4cbc.js.map",
+    "787.bf84bd8a.chunk.js.map": "/eco-store/static/js/787.bf84bd8a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e8f8a48.css",
+    "static/js/main.551f4cbc.js"
+  ]
+}
