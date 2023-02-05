@@ -10,11 +10,29 @@ background-image: linear-gradient(160deg, #d3dce1 0%, #c4d7d5 100%);
     width: 14%;
    position:fixed;
 background-color: rgb(209, 204, 196);
+border: 1px solid ;
+border-bottom-left-radius: 1.2rem;
+border-bottom-right-radius: 1.2rem;
+}
+.type_of_product{
+    font-size: 1.2rem;
+ width: 70%;
+ margin: auto;
 
+    margin-top: 3vh;
+   padding-left:1% ;
+   padding-right: 1%;
+    border-radius: 1.3rem;
+    color: aliceblue;
+  
+    background-image:url(../../images/bark.png) ;
 
 }
+.type_of_product:hover{
+    cursor: pointer;
+}
 .home_right_main{
-    width: 70%;
+    width: 78%;
  
     margin-left: 20%;
 }
@@ -65,16 +83,24 @@ margin-left: 8%;
         background-image: url(../../images/slide_5.png);
     }
 }
-.products_category{
-    display: grid;
-grid-template-columns: repeat(1,1fr);
 
-    row-gap: 10px;
+
+
+.Eco_kitchen{
+    font-size: 1.4rem;
+    margin-right: 80% ;
+    margin-top: 3vh;
+   padding-left:1% ;
+   padding-right: 1%;
+    border-radius: 1.3rem;
+    color: aliceblue;
+  
+    background-image:url(../../images/bark.png) ;
 }
-.products_category>div{
-
-height: 50vh;
-    background-color: white;
+.Eco_kitchen_box{
+display: grid;
+background-color: white;
+grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
 }
 

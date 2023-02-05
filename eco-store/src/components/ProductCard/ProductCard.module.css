@@ -1,0 +1,42 @@
+.productCard_main{
+border: 1px solid rgb(216, 207, 207);
+
+
+}
+.productCard_image_container{
+    padding: 4%;
+}
+.product_description_box{
+    padding: 3%;
+ 
+background-color: rgb(175, 242, 242);
+}
+.product_title{
+    font-size: 0.9rem;
+}
+.rating_box{
+display: flex;
+margin: auto;
+width: 70%;
+align-items: center;
+}
+
+.ratingCount{
+    margin-left: 4%;
+}
+.priceBox{
+    display: flex;
+    width: 77%;
+    margin: auto;
+    justify-content: space-between;
+
+}
+.priceBox>h1{
+    font-size: 1.7rem;
+}
+.priceBox>h2{
+    text-decoration: line-through;
+}
+.priceBox>p{
+    font-size: 0.7rem;
+}
