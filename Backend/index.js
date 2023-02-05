@@ -9,6 +9,10 @@ const {AdminuserRoute}=require("./router/AdminuserRoute")
 const {Authentication}=require("./middleware/Authenticate")
 
 const {AdminProductsRoute}=require("./router/AdminproductRoute")
+const { UserProductRoute } = require("./router/UserProductsRoutes")
+const { CustomerUserRoute } = require("./router/CustomerUserRoute")
+const { CartRoute } = require("./router/UserCartRoute")
+const { OrderRoute } = require("./router/OrderRoute")
 app.use(express.json())
 
 app.use(cors())
@@ -19,10 +23,13 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/admin",AdminuserRoute)
-
+app.use("/customerproducts",UserProductRoute)
+app.use("/orders",OrderRoute)
+app.use("/cart",CartRoute)
+app.use("/customerUser",CustomerUserRoute)
 app.use(Authentication)
 
-app.use("/products",AdminProductsRoute)
+app.use("/Adminproducts",AdminProductsRoute)
 app.listen(process.env.port,async ()=>{
 
 
