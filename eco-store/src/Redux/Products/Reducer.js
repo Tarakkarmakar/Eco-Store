@@ -13,7 +13,7 @@ const reducer = (state = initialState, action) => {
   switch(type){
     case types.GET_PRODUCTS_REQUEST:
     
-      return {...state, isLoading: false}
+      return {...state, isLoading: true}
     case types.GET_PRODUCTS_FAILURE:
       return {...state, isLoading:false, isError: true}
 

@@ -25,7 +25,7 @@ const getProducts = (params) => (dispatch) => {
     //console.log(name)
     dispatch(getProductsRequest());
     return axios
-      .get(`https://sore-puce-armadillo-hem.cyclic.app/customerproducts`,params)
+      .get(`${process.env.REACT_APP_All_products}/customerproducts`,params)
       .then((r) => {
   
         console.log(r.data)
