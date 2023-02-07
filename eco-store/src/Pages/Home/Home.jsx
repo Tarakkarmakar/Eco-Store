@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getProducts } from "../../Redux/Products/action";
+
 const Home = () => {
   const prod = useSelector((store) => store.products);
 
@@ -28,6 +29,8 @@ const Home = () => {
       dispatch(getProducts(dataparams));
     }
   }, [searchParams, dispatch, location]);
+
+
 
   return (
     <div className={csshome.home_main}>
@@ -80,6 +83,7 @@ const Home = () => {
       </div>
     </div>
   );
+          
 };
 
 export default Home;

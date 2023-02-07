@@ -1,0 +1,31 @@
+.footer_main_con{
+display: grid;
+padding: 1%;
+grid-template-columns: 1fr 1fr 1fr 1fr ;
+gap: 2%;
+
+}
+.cities_headline{
+font-size: 1.2rem;
+font-weight: 700;
+}
+li{
+    list-style: none;
+}
+.footer_logo_container{
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+.footer_logo{
+    width: 70%;
+}
+@media all and (min-width: 0px) and (max-width:399px) {
+    .footer_main_con{
+grid-template-columns: repeat( 2, 1fr);
+    }
+}

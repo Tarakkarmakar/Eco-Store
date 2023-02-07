@@ -6,7 +6,7 @@ background-image: linear-gradient(160deg, #d3dce1 0%, #c4d7d5 100%);
     width: 100%;
 }
 .home_left_bar{
-    height: 60vh;
+    height: 50vh;
     width: 14%;
    position:fixed;
 background-color: rgb(209, 204, 196);
@@ -94,7 +94,6 @@ margin-left: 8%;
    padding-right: 1%;
     border-radius: 1.3rem;
     color: aliceblue;
-  
     background-image:url(../../images/bark.png) ;
 }
 .Eco_kitchen_box{
@@ -116,6 +115,19 @@ width: 55%;
     font-size: 90%;
     
          }
+         .home_left_bar{
+            width:20%
+        }
+        .home_right_main{
+            width: 76%;
+            margin-left: 23%;
+         }
+         .Eco_kitchen_box{
+            grid-template-columns: 1fr 1fr 1fr;
+         }
+         .Eco_kitchen{
+            margin-right: 75%;
+          }
 
 }
 /* 
@@ -129,14 +141,22 @@ hi */
 font-size: 70%;
 
      }
+   
+     .Eco_kitchen{
+        margin-right: 57%;
+      }
      .home_heading_box{
         width: 75%;
         margin-bottom: 5%;
          }
          .Eco_kitchen_box{
-          
+          margin-left: 3%;
             grid-template-columns: 1fr 1fr;
             
+            }
+
+            .home_left_bar{
+                width:20%
             }
 }
 @media all and (min-width: 0px) and (max-width:399px) {
@@ -148,9 +168,53 @@ font-size: 70%;
         font-size: 60%;
         
              }
+             .Eco_kitchen{
+                margin-right: 1%;
+              }
+
              .Eco_kitchen_box{
           
                 grid-template-columns: 1fr ;
                 
                 }
+           
+                .home_right_main{
+                    width: 95%;
+                    margin-left: 0%;
+                   
+                }
+                
+
+                .home_left_bar{
+                    display: none;
+                    width: 0%;
+                    height: 0vh;
+                    background-color: rgb(240, 255, 244);
+                }
+             
+                .type_of_product{
+                  width: 100%; 
+                
+                }
+                .Eco_kitchen_box{
+                    grid-template-columns: 1fr 1fr;
+                }
+                .Eco_kitchen{
+                  margin-right: 1%;
+                }
+}
+@media all and (min-width: 400px) and (max-width:600px) {
+
+.home_left_bar{
+    display: none;
+    width: 0%;
+    height: 0vh;
+    background-color: rgb(240, 255, 244);
+}
+.home_right_main{
+    width: 95%;
+    margin-left: 0%;
+   
+}
+
 }
