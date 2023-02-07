@@ -6,10 +6,19 @@ import ProductCard from "../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
+import { Skeleton, SkeletonCircle, SkeletonText,Box } from '@chakra-ui/react'
 import { getProducts } from "../../Redux/Products/action";
 
 const Home = () => {
-  const prod = useSelector((store) => store.products);
+  const { isLoading ,prod} = useSelector((state) => {
+    return {
+      isLoading: state.Allproducts.isLoading,
+      prod :state.Allproducts.products
+    };
+  });
+
+  
+  // const prod = useSelector((store) => store.rootReducer.Allproducts.products);
 
   const dispatch = useDispatch();
 
@@ -29,8 +38,16 @@ const Home = () => {
       dispatch(getProducts(dataparams));
     }
   }, [searchParams, dispatch, location]);
-
-
+ 
+  if(isLoading){
+    return (
+      <Box padding='6' boxShadow='lg' bg='white'>
+  <SkeletonCircle size='10' />
+  <SkeletonText mt='4' noOfLines={10} spacing='4' skeletonHeight='5' />
+</Box>
+    )
+  }
+else{
 
   return (
     <div className={csshome.home_main}>
@@ -83,7 +100,7 @@ const Home = () => {
       </div>
     </div>
   );
-          
+}
 };
 
 export default Home;

@@ -5,9 +5,15 @@ import logo from "../../images/logo.png"
 import bag from "../../images/bag.png"
 import { HamburgerIcon, Search2Icon } from '@chakra-ui/icons'
 import account  from "../../images/account.jpg"
+import { useNavigate } from "react-router-dom"
 const Navbar = () => {
 
+const navigate=useNavigate()
 
+const gosignUp=()=>{
+
+  navigate("signup")
+}
 
 
 
@@ -47,7 +53,7 @@ const Navbar = () => {
   <ul className={css.nav_right_list}>
 
     
-    <li> <img className={css.nav_account} src={account}  /> <p> SignUp/Login</p>
+    <li onClick={gosignUp}> <img className={css.nav_account} src={account}  /> <p> SignUp/Login</p>
    </li>
    
     <li>Become a Partner</li>
