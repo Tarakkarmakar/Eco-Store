@@ -130,7 +130,7 @@ export default function Login() {
           </Heading>
 
           <FormControl
-            w={isLargerThan992 ? "34%" : "70%"}
+            w={isLargerThan992 ? "24%" : "70%"}
             borderRadius="lg"
             p={"3"}
             cursor="pointer"
