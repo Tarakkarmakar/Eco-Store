@@ -25,7 +25,7 @@ const getProducts = (params) => (dispatch) => {
     //console.log(name)
     dispatch(getProductsRequest());
     return axios
-      .get(`${process.env.REACT_APP_All_products}/customerproducts`,params)
+      .get(`${process.env.REACT_APP_API}/customerproducts`,params)
       .then((r) => {
   
         console.log(r.data)

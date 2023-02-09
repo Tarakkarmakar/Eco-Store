@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { AiFillApple } from "react-icons/ai"; // FcGoogle
 import { FcGoogle } from "react-icons/fc";
@@ -24,12 +23,14 @@ import {
   Text,
   useMediaQuery,
   useToast,
+  InputGroup,
+  InputRightElement,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { Loginfunction } from "../../Redux/SignUpReducer/action";
+import Navbar from "../../components/Navbar.jsx/Navbar";
 
 export default function Login() {
-  const [isLoading, setIsLoading] = useState(false);
   const [userObj, setUserObj] = useState([]);
   const [email, setEmail] = useState("");
   const dispatch = useDispatch();
@@ -41,9 +42,11 @@ export default function Login() {
   const GotoHome = () => {
     navigate("/");
   };
-  const { isAuth } = useSelector((state) => {
+  const { isAuth, isError, isLoading } = useSelector((state) => {
     return {
       isAuth: state.signUpReducer.isAuth,
+      isError: state.signUpReducer.isError,
+      isLoading: state.signUpReducer.isLoading,
     };
   });
 
@@ -54,61 +57,89 @@ export default function Login() {
   //     setIsLoading(false);
   //   }, 500);
   // }, []);
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+  useEffect(() => {
+    if (isAuth) {
+      toast({
+        title: `LogIn Successfull`,
+        status: "success",
+        duration: 500,
+        position: "top",
+        isClosable: true,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+    } else {
+      if (isError) {
+        toast({
+          title: `Invalid User Details!!!`,
+          status: "error",
+          duration: 1500,
+          position: "top",
+          isClosable: true,
+        });
+      }
+      console.log(isError);
+    }
+  }, [isAuth, navigate, toast, isError]);
 
-  // useEffect(() => {
-  //   if (isAuth) {
-  //     toast({
-  //       title: `LogIn Successfull`,
-  //       status: "success",
-  //       duration: 500,
-  //       position: "top",
-  //       isClosable: true,
-  //     });
-  //     setTimeout(() => {
-  //       // navigate("/payment");
-  //     }, 1500);
-  //   }
-  // }, [isAuth, navigate, toast]);
+  const SendSignInRequest = (e) => {
+    e.preventDefault();
+    if (email === "" && password === "") {
+      toast({
+        title: `Please Fill all the feilds !!!`,
+        status: "error",
+        duration: 1500,
+        position: "top",
+        isClosable: true,
+      });
+    } else if (email === "") {
+      toast({
+        title: `Please give your email !!!`,
+        status: "error",
+        duration: 1500,
+        position: "top",
+        isClosable: true,
+      });
+    } else if (password === "") {
+      toast({
+        title: `Please give your password !!!`,
+        status: "error",
+        duration: 1500,
+        position: "top",
+        isClosable: true,
+      });
+    } else {
+      dispatch(
+        Loginfunction({
+          email: email,
+          password: password,
+        })
+      );
+    }
 
-  const SendSignInRequest = () => {
- 
-
-
-        //   toast({
-        //     title: `Invalid Employee Id !!!`,
-        //     status: "error",
-        //     duration: 1500,
-        //     position: "top",
-        //     isClosable: true,
-        //   });
-        // } 
-
-    
- 
-     
-  
-      /* if email is not found */
-      // toast({
-      //   title: `User not registered !!!`,
-      //   status: "error",
-      //   duration: 1500,
-      //   position: "top",
-      //   isClosable: true,
-      // })
- 
-    // setEmail("");
-    // setPassword("");
-
-  }
+    // }
+    /* if email is not found */
+    // toast({
+    //   title: `User not registered !!!`,
+    //   status: "error",
+    //   duration: 1500,
+    //   position: "top",
+    //   isClosable: true,
+    // })
+    setEmail("");
+    setPassword("");
+  };
   return (
     <>
-      <Flex border="1px" color="black" alignItems="center">
-        <ArrowBackIcon color="blue" boxSize={6} onClick={GotoHome} />
-        <Image marginLeft="41%" boxSize="12%" src={logo} alt="" />
+      <Flex color="black" alignItems="center">
+        <ArrowBackIcon color="blue" boxSize={8} onClick={GotoHome} />
       </Flex>
 
       {isLoading ? (
-        <Flex justify="center" mt={"5"}>
+        <Flex justify="center" h="30vh" mt={"5"}>
           <Spinner
             thickness="5px"
             speed="0.65s"
@@ -125,7 +156,7 @@ export default function Login() {
           textAlign="left"
         >
           <Heading mt="10" as="h2" size="lg">
-            Sign In
+            Log In
             <br />
           </Heading>
 
@@ -137,9 +168,9 @@ export default function Login() {
             mt={5}
             isRequired
           >
-           
             {/* email */}
             <FormLabel htmlFor="email">Enter Email</FormLabel>
+
             <Input
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter Email address"
@@ -150,28 +181,37 @@ export default function Login() {
               type={"email"}
               id="email"
             />
+
             <FormHelperText mb={"8px"}>
               We'll never share your email.
             </FormHelperText>
 
             {/* password */}
             <FormLabel htmlFor="password">Enter Password</FormLabel>
-            <Input
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              w={"100%"}
-              h={"40px"}
-              value={password}
-              border={`2px solid`}
-              type={"password"}
-              mb={"8px"}
-              id="password"
-            />
+            <InputGroup>
+              <Input
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password"
+                w={"100%"}
+                h={"40px"}
+                value={password}
+                type={show ? "text" : "password"}
+                border={`2px solid`}
+                mb={"8px"}
+                id="password"
+              />
+
+              <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+            </InputGroup>
             <Checkbox size={"lg"} defaultChecked>
               Keep me signed in
             </Checkbox>
             <br />
-           
+
             <Button
               onClick={SendSignInRequest}
               w={"100%"}

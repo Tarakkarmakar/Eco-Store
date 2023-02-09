@@ -6,7 +6,7 @@ border: 1px solid black;
 display: flex;
     width: 100%;
 align-items: center;
-  
+  z-index: 1000;
 background-color: green;
     padding-left: 5%;
     padding-right: 2%;

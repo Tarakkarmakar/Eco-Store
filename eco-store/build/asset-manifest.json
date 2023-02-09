@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Eco-Store/static/css/main.932ebe7e.css",
-    "main.js": "/Eco-Store/static/js/main.bca69a47.js",
+    "main.css": "/Eco-Store/static/css/main.046be420.css",
+    "main.js": "/Eco-Store/static/js/main.90994a7a.js",
     "static/js/787.bf84bd8a.chunk.js": "/Eco-Store/static/js/787.bf84bd8a.chunk.js",
     "static/media/slide_3.jpg": "/Eco-Store/static/media/slide_3.dd7bfd71bdbdb3ea918e.jpg",
     "static/media/slide_5.png": "/Eco-Store/static/media/slide_5.241d4b692d9c521c9196.png",
@@ -15,12 +15,12 @@
     "static/media/logo.png": "/Eco-Store/static/media/logo.d2a4b25a389dcb503e74.png",
     "static/media/logo.svg": "/Eco-Store/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Eco-Store/index.html",
-    "main.932ebe7e.css.map": "/Eco-Store/static/css/main.932ebe7e.css.map",
-    "main.bca69a47.js.map": "/Eco-Store/static/js/main.bca69a47.js.map",
+    "main.046be420.css.map": "/Eco-Store/static/css/main.046be420.css.map",
+    "main.90994a7a.js.map": "/Eco-Store/static/js/main.90994a7a.js.map",
     "787.bf84bd8a.chunk.js.map": "/Eco-Store/static/js/787.bf84bd8a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.932ebe7e.css",
-    "static/js/main.bca69a47.js"
+    "static/css/main.046be420.css",
+    "static/js/main.90994a7a.js"
   ]
 }

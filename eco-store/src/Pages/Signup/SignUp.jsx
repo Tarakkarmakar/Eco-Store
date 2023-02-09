@@ -5,10 +5,10 @@ import { AiFillFacebook } from "react-icons/ai";
 import { useDispatch, shallowEqual, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { SignUpFunction } from "../../Redux/SignUpReducer/action";
-import { ArrowBackIcon, ArrowDownIcon } from '@chakra-ui/icons'
-import logo from "../../images/logo.png"
+import { ArrowBackIcon, ArrowDownIcon } from "@chakra-ui/icons";
+import logo from "../../images/logo.png";
 import {
-    Image,
+  Image,
   Box,
   Button,
   Checkbox,
@@ -30,10 +30,10 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
-const [name,setName]=useState("")
-  const GotoHome=()=>{
-    navigate("/")
-  }
+  const [name, setName] = useState("");
+  const GotoHome = () => {
+    navigate("/");
+  };
   const { userData, successfullyCreated, createAccountError } = useSelector(
     (state) => {
       return {
@@ -56,7 +56,7 @@ const [name,setName]=useState("")
         duration: 2000,
         position: "top",
         status: "success",
-       isClosable: true,
+        isClosable: true,
       });
       setTimeout(() => {
         navigate("/login");
@@ -64,7 +64,6 @@ const [name,setName]=useState("")
     }
   }, [successfullyCreated]);
   useEffect(() => {
-
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
@@ -84,12 +83,10 @@ const [name,setName]=useState("")
   function SendSignInRequest() {
     dispatch(
       SignUpFunction({
-
         name: name,
         email: email,
-      gender:gender,
+        gender: gender,
         password: password,
-       
       })
     );
     setEmail("");
@@ -109,10 +106,10 @@ const [name,setName]=useState("")
             size="lg"
           />
         </Flex>
-      ) : (  <>
+      ) : (
+        <>
           <Flex marginTop="1rem" color="black" alignItems="center">
             <ArrowBackIcon color="blue" boxSize={9} onClick={GotoHome} />
-       
           </Flex>
 
           <Flex
@@ -145,8 +142,7 @@ const [name,setName]=useState("")
               />
               <br />
               <br />
-            
-            
+
               {/* Name */}
 
               <Input
@@ -160,12 +156,11 @@ const [name,setName]=useState("")
                 mb={"8px"}
                 id="userName"
               />
-            
+
               <br />
               <Select
                 onChange={(e) => setGender(e.target.value)}
                 placeholder="Gender"
-               
                 w={"100%"}
                 h={"40px"}
                 border={`2px solid`}
@@ -176,10 +171,9 @@ const [name,setName]=useState("")
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Others">Other</option>
-                </Select>
+              </Select>
               <br />
 
-           
               {/* email */}
 
               {/* UserType */}
@@ -197,7 +191,6 @@ const [name,setName]=useState("")
                 mb={"8px"}
                 id="password"
               />
-             
 
               <Button
                 onClick={SendSignInRequest}
@@ -244,11 +237,8 @@ const [name,setName]=useState("")
               </Box>
             </FormControl>
           </Flex>
-
         </>
       )}
     </>
   );
-
 }
-
