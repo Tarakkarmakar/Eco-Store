@@ -1,16 +1,20 @@
 import css from "./Navbar.module.css";
-import { Input, InputGroup, InputRightElement, Button } from "@chakra-ui/react";
+import { Input, InputGroup, InputRightElement, Button, Stack, Avatar, AvatarBadge } from "@chakra-ui/react";
 import logo from "../../images/logo.png";
 import bag from "../../images/bag.png";
 import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
 import account from "../../images/account.jpg";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Navbar = () => {
   const navigate = useNavigate();
 
-  const gosignUp = () => {
+  const goSignup = () => {
     navigate("/login");
   };
+let user=JSON.parse(localStorage.getItem("email"))
+
+
 
   return (
     <div className={css.main_nav}>
@@ -34,11 +38,19 @@ const Navbar = () => {
 
       <div className={css.nav_right_section}>
         <ul className={css.nav_right_list}>
-          <li onClick={gosignUp}>
+{user!="" ? 
+<li>
+  <Avatar>
+    <AvatarBadge boxSize='1.25em' bg='blue.500' />
+  </Avatar>
+  </li>
+  :  <li onClick={goSignup}>
             {" "}
             <img className={css.nav_account} src={account} />{" "}
             <p> SignUp/Login</p>
-          </li>
+          </li> }
+      
+        
 
           <li>Become a Partner</li>
           <li>
