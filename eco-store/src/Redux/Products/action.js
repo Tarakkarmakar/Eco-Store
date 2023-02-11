@@ -22,7 +22,7 @@ const getProductssError = () => {
 };
 const getProducts = (params) => (dispatch) => {
 
-    //console.log(name)
+
     dispatch(getProductsRequest());
     return axios
       .get(`${process.env.REACT_APP_API}/customerproducts`,params)
@@ -39,4 +39,23 @@ const getProducts = (params) => (dispatch) => {
     
   }
 
-  export {getProducts}
+  const getProductsKitchen = (params) => (dispatch) => {
+
+
+    dispatch(getProductsRequest());
+    return axios
+      .get(`${process.env.REACT_APP_API}/customerproducts/kitchen`,params)
+      .then((r) => {
+  
+        console.log(r.data)
+        dispatch(getProductsSuccess(r.data));
+  
+       
+      })
+      .catch((e) => {
+        dispatch(getProductssError());
+      });
+    
+  }
+
+  export {getProducts,getProductsKitchen}
