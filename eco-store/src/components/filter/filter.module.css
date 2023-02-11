@@ -1,0 +1,54 @@
+.filter_section {
+    border: 1px solid rgb(196, 172, 172);
+  
+    margin-top: 18vh;
+    position: sticky;
+  }
+  
+  .brand_filter {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 7%;
+  }
+  .filter_section > div > span {
+    font-weight: 600;
+    margin-bottom: 5%;
+    align-self: flex-start;
+  }
+  
+  .filterprice_filter {
+    border-bottom: 1px solid rgb(86, 55, 55);
+    display: flex;
+    flex-direction: column;
+    padding: 7%;
+  }
+  .color_filter {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    padding: 7%;
+  }
+  .color_filter {
+    display: flex;
+    flex-direction: column;
+    padding: 7%;
+  }
+  .discount_filter {
+    align-self: flex-start;
+    padding: 6%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .color_filter > div {
+    display: flex;
+    column-gap: 3%;
+    margin-bottom: 2%;
+  }
+  .product_section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 7%;
+  }
+  

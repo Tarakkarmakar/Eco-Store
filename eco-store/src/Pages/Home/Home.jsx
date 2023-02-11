@@ -4,18 +4,26 @@ import tree from "../../images/tree.png";
 import { css } from "@chakra-ui/react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Skeleton, SkeletonCircle, SkeletonText,Box } from '@chakra-ui/react'
 import { getProducts } from "../../Redux/Products/action";
 
 const Home = () => {
+  const navigate=useNavigate()
   const { isLoading ,prod} = useSelector((state) => {
     return {
       isLoading: state.Allproducts.isLoading,
       prod :state.Allproducts.products
     };
   });
+
+
+  const gotoKitchen=()=>{
+
+    navigate("/kitchen")
+  }
+
 
   
   // const prod = useSelector((store) => store.rootReducer.Allproducts.products);
@@ -31,7 +39,7 @@ const Home = () => {
         params: {
           _sort: "product-discountedPrice",
           _order: searchParams.get("sort"),
-          "product-brand": searchParams.getAll("category"),
+          "brand": searchParams.getAll("category"),
         },
       };
 
@@ -54,7 +62,7 @@ else{
       <div className={csshome.home_left_bar}>
        <div className={csshome.type_of_product}>Plants</div>
        <div className={csshome.type_of_product}>Fashion</div>
-       <div className={csshome.type_of_product}>Kitchen</div>
+       <div className={csshome.type_of_product} onClick={gotoKitchen}>Kitchen</div>
        <div className={csshome.type_of_product}>Daily Products</div>
        <div className={csshome.type_of_product}>Explore</div>
       </div>
