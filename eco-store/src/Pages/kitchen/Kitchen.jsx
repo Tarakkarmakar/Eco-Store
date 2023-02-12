@@ -23,7 +23,7 @@ const Kitchen = () => {
       if (location || prod.length == 0) {
         const dataparams = {
           params: {
-            _sort: "product-discountedPrice",
+            _sort: "price",
             _order: searchParams.get("sort"),
             "brand": searchParams.getAll("category"),
           },
