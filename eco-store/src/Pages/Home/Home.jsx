@@ -24,7 +24,18 @@ const Home = () => {
     navigate("/kitchen")
   }
 
+  const gotoFashion=()=>{
 
+    navigate("/fashion")
+  }
+  const gotoPlants=()=>{
+
+    navigate("/plants")
+  }
+  const gotoExplore=()=>{
+
+    navigate("/explore")
+  }
   
   // const prod = useSelector((store) => store.rootReducer.Allproducts.products);
 
@@ -60,11 +71,11 @@ else{
   return (
     <div className={csshome.home_main}>
       <div className={csshome.home_left_bar}>
-       <div className={csshome.type_of_product}>Plants</div>
-       <div className={csshome.type_of_product}>Fashion</div>
+       <div className={csshome.type_of_product} onClick={gotoPlants}>Plants</div>
+       <div className={csshome.type_of_product} onClick={gotoFashion}>Fashion</div>
        <div className={csshome.type_of_product} onClick={gotoKitchen}>Kitchen</div>
-       <div className={csshome.type_of_product}>Daily Products</div>
-       <div className={csshome.type_of_product}>Explore</div>
+
+       <div className={csshome.type_of_product} onClick={gotoExplore}>Explore</div>
       </div>
 
 

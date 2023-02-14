@@ -24,7 +24,7 @@ background-color: green;
 }
 .nav_logo{
    width: 70%;
-   
+   cursor: pointer;
 }
 .nav_company_name{
     color: white;
