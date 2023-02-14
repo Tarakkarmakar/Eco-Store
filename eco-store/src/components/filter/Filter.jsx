@@ -66,7 +66,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         <span>BRAND</span>
         <Checkbox
           value={one}
-          checked={category.includes("Roadster")}
+          checked={category.includes("beco")}
           onChange={handleCheckBox}
           colorScheme="red"
           borderColor="grey"
@@ -75,7 +75,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         </Checkbox>
         <Checkbox
           value={two}
-          checked={category.includes("H&M")}
+          checked={category.includes("sanhya dale")}
           colorScheme="red"
           onChange={handleCheckBox}
           borderColor="grey"
@@ -94,7 +94,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         <Checkbox
           value={four}
           colorScheme="red"
-          checked={category.includes("HERE&NOW")}
+          checked={category.includes("")}
           onChange={handleCheckBox}
           borderColor="grey"
         >
@@ -104,7 +104,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         <Checkbox
           value={five}
           colorScheme="red"
-          checked={category.includes("Huetrap")}
+          checked={category.includes("")}
           onChange={handleCheckBox}
           borderColor="grey"
         >
@@ -113,7 +113,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         <Checkbox
           value={six}
           colorScheme="red"
-          checked={category.includes("WROGN")}
+          checked={category.includes("")}
           onChange={handleCheckBox}
           borderColor="grey"
         >
@@ -124,7 +124,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         <Checkbox
           value={seven}
           colorScheme="red"
-          checked={category.includes("Urbano Fashion")}
+          checked={category.includes("")}
           onChange={handleCheckBox}
           borderColor="grey"
         >
