@@ -23,12 +23,12 @@ const Kitchen = () => {
       if (location || prod.length == 0) {
         const dataparams = {
           params: {
-            _sort: "price",
-            _order: searchParams.get("sort"),
-            "brand": searchParams.getAll("category"),
+            sort: "price",
+            order: searchParams.getAll("order"),
+            brand: searchParams.getAll("brand"),
           },
         };
-  
+  console.log(dataparams)
         dispatch(getProductsKitchen(dataparams));
       }
     }, [searchParams, dispatch, location]);

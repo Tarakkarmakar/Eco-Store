@@ -21,41 +21,29 @@ const getProductssError = () => {
   };
 };
 const getProducts = (params) => (dispatch) => {
+  dispatch(getProductsRequest());
+  return axios
+    .get(`${process.env.REACT_APP_API}/customerproducts`, params)
+    .then((r) => {
+      console.log(r.data);
+      dispatch(getProductsSuccess(r.data));
+    })
+    .catch((e) => {
+      dispatch(getProductssError());
+    });
+};
 
+const getProductsKitchen = (params) => (dispatch) => {
+  dispatch(getProductsRequest());
+  return axios
+    .get(`${process.env.REACT_APP_API}/customerproducts/kitchen`, params)
+    .then((r) => {
+      console.log(r.data);
+      dispatch(getProductsSuccess(r.data));
+    })
+    .catch((e) => {
+      dispatch(getProductssError());
+    });
+};
 
-    dispatch(getProductsRequest());
-    return axios
-      .get(`${process.env.REACT_APP_API}/customerproducts`,params)
-      .then((r) => {
-  
-        console.log(r.data)
-        dispatch(getProductsSuccess(r.data));
-  
-       
-      })
-      .catch((e) => {
-        dispatch(getProductssError());
-      });
-    
-  }
-
-  const getProductsKitchen = (params) => (dispatch) => {
-
-
-    dispatch(getProductsRequest());
-    return axios
-      .get(`${process.env.REACT_APP_API}/customerproducts/kitchen`,params)
-      .then((r) => {
-  
-        console.log(r.data)
-        dispatch(getProductsSuccess(r.data));
-  
-       
-      })
-      .catch((e) => {
-        dispatch(getProductssError());
-      });
-    
-  }
-
-  export {getProducts,getProductsKitchen}
+export { getProducts, getProductsKitchen };
