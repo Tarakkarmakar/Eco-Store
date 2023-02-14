@@ -12,7 +12,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
   const initialsort = searchParams.getAll("sort");
   const [category, setCategory] = useState(initialcategory || []);
   const [sort, setSort] = useState(initialsort[0] || "");
-
+const order=searchParams.getAll("sort") || ""
   const handleCheckBox = (e) => {
     const newCategory = [...category];
 
@@ -26,9 +26,11 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
   useEffect(() => {
     let params = {};
 
-    params.category = category;
-    sort && (params.sort = sort);
-
+    params.brand = category;
+    sort && (params.sort = "price");
+    if(order!=""){
+    order && (params.order=sort);
+    }
     setSearchParams(params);
   }, [category, setSearchParams, sort]);
 
@@ -84,7 +86,7 @@ const Filter = ({ one, two, three, four, five, six, seven }) => {
         </Checkbox>
         <Checkbox
           value={three}
-          checked={category.includes("HRX by Hrithik Roshan")}
+          checked={category.includes("")}
           onChange={handleCheckBox}
           colorScheme="red"
           borderColor="grey"

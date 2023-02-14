@@ -24,11 +24,11 @@ const Kitchen = () => {
         const dataparams = {
           params: {
             sort: "price",
-            order: searchParams.get("sort"),
-            brand: searchParams.getAll("category"),
+            order: searchParams.getAll("order"),
+            brand: searchParams.getAll("brand"),
           },
         };
-  
+  console.log(dataparams)
         dispatch(getProductsKitchen(dataparams));
       }
     }, [searchParams, dispatch, location]);
