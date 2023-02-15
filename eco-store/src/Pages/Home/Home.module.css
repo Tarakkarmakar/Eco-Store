@@ -97,6 +97,7 @@
   display: grid;
   background-color: white;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1rem;
 }
 
 @media all and (min-width: 701px) and (max-width: 1030px) {
@@ -181,6 +182,7 @@ hi */
   }
   .Eco_kitchen_box {
     grid-template-columns: 1fr 1fr;
+    gap: 3%;
   }
   .Eco_kitchen {
     margin-right: 1%;

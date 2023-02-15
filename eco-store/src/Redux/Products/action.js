@@ -45,5 +45,28 @@ const getProductsKitchen = (params) => (dispatch) => {
       dispatch(getProductssError());
     });
 };
-
-export { getProducts, getProductsKitchen };
+const getProductsFashion = (params) => (dispatch) => {
+  dispatch(getProductsRequest());
+  return axios
+    .get(`${process.env.REACT_APP_API}/customerproducts/fashion`, params)
+    .then((r) => {
+      console.log(r.data);
+      dispatch(getProductsSuccess(r.data));
+    })
+    .catch((e) => {
+      dispatch(getProductssError());
+    });
+};
+const getProductsPlants = (params) => (dispatch) => {
+  dispatch(getProductsRequest());
+  return axios
+    .get(`${process.env.REACT_APP_API}/customerproducts/plants`, params)
+    .then((r) => {
+      console.log(r.data);
+      dispatch(getProductsSuccess(r.data));
+    })
+    .catch((e) => {
+      dispatch(getProductssError());
+    });
+};
+export { getProducts, getProductsKitchen,getProductsFashion,getProductsPlants };

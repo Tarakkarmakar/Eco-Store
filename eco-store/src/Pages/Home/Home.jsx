@@ -24,8 +24,44 @@ const Home = () => {
     navigate("/kitchen")
   }
 
+  const gotoFashion=()=>{
 
-  
+    navigate("/fashion")
+  }
+  const gotoPlants=()=>{
+
+    navigate("/plants")
+  }
+  const gotoExplore=()=>{
+
+    navigate("/explore")
+  }
+const kitchen_product=[]
+  prod.map((ele) => {
+    if (ele.category == "kitchen" ) {
+     
+     kitchen_product.push(ele)
+    
+    }
+
+  })
+  const plants_product=[]
+  prod.map((ele) => {
+    if (ele.category == "plants" ) {
+     
+      plants_product.push(ele)
+    
+    }
+
+  })
+  const fashion_product=[]
+  prod.map((ele) => {
+    if (ele.category == "plants" ) {
+      fashion_product.push(ele)
+    
+    }
+
+  })
   // const prod = useSelector((store) => store.rootReducer.Allproducts.products);
 
   const dispatch = useDispatch();
@@ -60,11 +96,11 @@ else{
   return (
     <div className={csshome.home_main}>
       <div className={csshome.home_left_bar}>
-       <div className={csshome.type_of_product}>Plants</div>
-       <div className={csshome.type_of_product}>Fashion</div>
+       <div className={csshome.type_of_product} onClick={gotoPlants}>Plants</div>
+       <div className={csshome.type_of_product} onClick={gotoFashion}>Fashion</div>
        <div className={csshome.type_of_product} onClick={gotoKitchen}>Kitchen</div>
-       <div className={csshome.type_of_product}>Daily Products</div>
-       <div className={csshome.type_of_product}>Explore</div>
+
+       <div className={csshome.type_of_product} onClick={gotoExplore}>Explore</div>
       </div>
 
 
@@ -80,29 +116,40 @@ else{
   
           <span className={csshome.Eco_kitchen}>Eco-Kitchen</span>
           <div className={csshome.Eco_kitchen_box}>
-            {prod.map((ele) => {
-              if (ele.category == "kitchen") {
-                return <ProductCard ele={ele} key={ele._id} />;
-              }
-            })}
+          { kitchen_product.map((ele,index) => {
+            
+            if ( index<5) {
+          
+              return <ProductCard ele={ele} key={ele._id} />;
+              
+            }
+          })
+        }
           </div>
 
           <span className={csshome.Eco_kitchen}>Eco-Plants</span>
           <div className={csshome.Eco_kitchen_box}>
-            {prod.map((ele) => {
-              if (ele.category == "plants") {
+        
+            { plants_product.map((ele,index) => {
+            
+              if ( index<5) {
+            
                 return <ProductCard ele={ele} key={ele._id} />;
+                
               }
             })}
           </div>
 
           <span className={csshome.Eco_kitchen}>Eco-fashion</span>
           <div className={csshome.Eco_kitchen_box}>
-            {prod.map((ele) => {
-              if (ele.category == "fashion") {
-                return <ProductCard ele={ele} key={ele._id} />;
-              }
-            })}
+          { plants_product.map((ele,index) => {
+            
+            if ( index<5) {
+          
+              return <ProductCard ele={ele} key={ele._id} />;
+              
+            }
+          })}
           </div>
        
       </div>

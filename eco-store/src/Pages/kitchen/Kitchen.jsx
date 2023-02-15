@@ -4,6 +4,7 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import Filter from "../../components/filter/Filter"
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { getProducts, getProductsKitchen } from "../../Redux/Products/action";
+
 import kitchen from "./kitchen.module.css"
 
 const Kitchen = () => {
@@ -25,7 +26,8 @@ const Kitchen = () => {
           params: {
             sort: "price",
             order: searchParams.getAll("order"),
-            brand: searchParams.getAll("brand"),
+            brand: searchParams.get("brand"),
+            off:searchParams.get("discount")
           },
         };
   console.log(dataparams)
@@ -36,7 +38,7 @@ const Kitchen = () => {
     <div className={kitchen.main_container}>
 
 
-        <div className={kitchen.left_filter_box}><Filter one="beco" two="sanhya dale" /></div>
+        <div className={kitchen.left_filter_box}><Filter one="beco" two="sanhya dale" three="wood nature" /></div>
 
         <div className={kitchen.right_product_box}>
         {prod.map((ele) => {

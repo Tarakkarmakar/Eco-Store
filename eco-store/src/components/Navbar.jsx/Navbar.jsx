@@ -12,13 +12,19 @@ const Navbar = () => {
   const goSignup = () => {
     navigate("/login");
   };
+  
+  const gotoHome=()=>{
+
+    navigate("/")
+  }
+ 
 let user=JSON.parse(localStorage.getItem("email"))
 
 
 
   return (
     <div className={css.main_nav}>
-      <div className={css.nav_left_section}>
+      <div className={css.nav_left_section} onClick={gotoHome}>
         <img className={css.nav_logo} src={logo} alt="" />
       </div>
       <div>

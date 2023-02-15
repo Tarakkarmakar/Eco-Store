@@ -5,15 +5,6 @@ const ProductCard = ({ele}) => {
 
 
  const {image,title,Rating,RatingCount,price,off,_id}=ele
-// let img="https://m.media-amazon.com/images/I/61kZoWZu6XL._AC_UL480_FMwebp_QL65_.jpg"
-// let title="simran wooden serving tool"
-
-// let rating=4
-// let ratingCount=200
-
-// let price=400
-
-// let off=5
 
 
 let prevousPrice=400/100*off+price

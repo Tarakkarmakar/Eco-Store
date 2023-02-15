@@ -8,31 +8,36 @@ import { useEffect } from "react";
 const Filter = ({ one, two, three, four, five, six, seven }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const initialcategory = searchParams.getAll("category");
+  const initialcategory = searchParams.get("category");
   const initialsort = searchParams.getAll("sort");
-  const [category, setCategory] = useState(initialcategory || []);
+  const [category, setCategory] = useState(initialcategory || "");
   const [sort, setSort] = useState(initialsort[0] || "");
-const order=searchParams.getAll("sort") || ""
-  const handleCheckBox = (e) => {
-    const newCategory = [...category];
+  const [discount, setDiscount] = useState(0);
+  const order = searchParams.getAll("sort") || "";
 
-    if (newCategory.includes(e.target.value)) {
-      newCategory.splice(newCategory.indexOf(e.target.value));
-    } else {
-      newCategory.push(e.target.value);
-    }
-    setCategory(newCategory);
+  const handleDisount = (e) => {
+    setDiscount(0)
+    setDiscount(e.target.value);
+    console.log(e.target.value)
+  };
+  const handleBrandFilter = (e) => {
+    setCategory("");
+    setCategory(e.target.value);
   };
   useEffect(() => {
     let params = {};
-
-    params.brand = category;
+    if (category != "") {
+      params.brand = category;
+    }
     sort && (params.sort = "price");
-    if(order!=""){
-    order && (params.order=sort);
+    if (order != "") {
+      order && (params.order = sort);
+    }
+    if (discount > 0) {
+     params.discount = discount;
     }
     setSearchParams(params);
-  }, [category, setSearchParams, sort]);
+  }, [category, setSearchParams, sort,discount]);
 
   const Handlesort = (e) => {
     setSort(e.target.value);
@@ -48,8 +53,8 @@ const order=searchParams.getAll("sort") || ""
               value="asc"
               defaultChecked={sort === "asc"}
               colorScheme="red"
-              borderColor="grey"
-            >
+              borderColor="green"
+            > 
               Low to High{" "}
             </Radio>
             <Radio
@@ -66,98 +71,48 @@ const order=searchParams.getAll("sort") || ""
       </div>
       <div className={filter.brand_filter}>
         <span>BRAND</span>
-        <Checkbox
-          value={one}
-          checked={category.includes("beco")}
-          onChange={handleCheckBox}
-          colorScheme="red"
-          borderColor="grey"
-        >
-          {one}
-        </Checkbox>
-        <Checkbox
-          value={two}
-          checked={category.includes("sanhya dale")}
-          colorScheme="red"
-          onChange={handleCheckBox}
-          borderColor="grey"
-        >
-          {two}{" "}
-        </Checkbox>
-        <Checkbox
-          value={three}
-          checked={category.includes("")}
-          onChange={handleCheckBox}
-          colorScheme="red"
-          borderColor="grey"
-        >
-          {three}
-        </Checkbox>
-        <Checkbox
-          value={four}
-          colorScheme="red"
-          checked={category.includes("")}
-          onChange={handleCheckBox}
-          borderColor="grey"
-        >
-          {" "}
-          {four}
-        </Checkbox>
-        <Checkbox
-          value={five}
-          colorScheme="red"
-          checked={category.includes("")}
-          onChange={handleCheckBox}
-          borderColor="grey"
-        >
-          {five}
-        </Checkbox>
-        <Checkbox
-          value={six}
-          colorScheme="red"
-          checked={category.includes("")}
-          onChange={handleCheckBox}
-          borderColor="grey"
-        >
-          {" "}
-          {six}
-        </Checkbox>
-
-        <Checkbox
-          value={seven}
-          colorScheme="red"
-          checked={category.includes("")}
-          onChange={handleCheckBox}
-          borderColor="grey"
-        >
-          {" "}
-          {seven}
-        </Checkbox>
+        <RadioGroup>
+          <Stack spacing={2} direction="column" onChange={handleBrandFilter}>
+            <Radio
+              value="All"
+              defaultChecked={category === "All"}
+              colorScheme="red"
+              borderColor="green"
+            >
+              All
+            </Radio>
+            <Radio
+              value={one}
+              defaultChecked={category === one}
+              colorScheme="red"
+              borderColor="green"
+            >
+              {one}
+            </Radio>
+            <Radio
+              value={two}
+              defaultChecked={sort === two}
+              colorScheme="red"
+              borderColor="grey"
+            >
+              {two}
+            </Radio>
+            <Radio
+              value={three}
+              defaultChecked={sort === three}
+              colorScheme="red"
+              borderColor="grey"
+            >
+              {three}
+            </Radio>
+          </Stack>
+        </RadioGroup>
       </div>
-      <div className={filter.filterprice_filter}>
-        <span>PRICE</span>
-
-        <Checkbox colorScheme="red" borderColor="grey">
-          {" "}
-          Rs. 149 to Rs. 399
-        </Checkbox>
-        <Checkbox colorScheme="red" borderColor="grey">
-          Rs. 400 to Rs. 999
-        </Checkbox>
-        <Checkbox colorScheme="red" borderColor="grey">
-          Rs. 1000 to Rs. 2000
-        </Checkbox>
-        <Checkbox colorScheme="red" borderColor="grey">
-          {" "}
-          Rs. 2001 to Rs. 3001
-        </Checkbox>
-      </div>
-    
 
       <div className={filter.discount_filter}>
-        <RadioGroup defaultValue="2">
-          <Stack spacing={2} direction="column">
-            <Radio colorScheme="red" value="10" borderColor="grey">
+        <RadioGroup>
+          <Stack spacing={2} direction="column" onChange={handleDisount}>
+            <Radio colorScheme="red" defaultChecked={discount === 10} value="10" borderColor="grey">
               10% and above{" "}
             </Radio>
             <Radio colorScheme="red" value="20" borderColor="grey">
@@ -179,9 +134,6 @@ const order=searchParams.getAll("sort") || ""
             <Radio colorScheme="red" value="60" borderColor="grey">
               {" "}
               60% and above
-            </Radio>
-            <Radio colorScheme="red" value="70" borderColor="grey">
-              70% and above{" "}
             </Radio>
           </Stack>
         </RadioGroup>
