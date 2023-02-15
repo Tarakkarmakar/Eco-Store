@@ -4,11 +4,17 @@ border: 1px solid rgb(216, 207, 207);
 
 }
 .productCard_image_container{
-    padding: 4%;
+ padding:3%;
+    height: 50%;
+}
+.productCard_image_container>img{
+ height: 100%;
+ display: block;
+ margin: auto;
 }
 .product_description_box{
     padding: 3%;
- 
+ height: 50%;
 background-color: rgb(175, 242, 242);
 }
 .product_title{

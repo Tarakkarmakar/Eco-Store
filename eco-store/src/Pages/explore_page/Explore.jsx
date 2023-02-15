@@ -22,24 +22,16 @@ const Explore= () => {
     const [searchParams] = useSearchParams();
   
     useEffect(() => {
-      if (location || prod.length == 0) {
-        const dataparams = {
-          params: {
-            sort: "price",
-            order: searchParams.getAll("order"),
-            brand: searchParams.get("brand"),
-            off:searchParams.get("discount")
-          },
-        };
-  console.log(dataparams)
-        dispatch(getProducts(dataparams));
-      }
-    }, [searchParams, dispatch, location]);
+   
+
+        dispatch(getProducts());
+      
+    }, [] );
   return (
     <div className={exp.main_container}>
 
 
-        <div className={exp.left_filter_box}><Filter one="" two="sanhya dale" three="wood nature" /></div>
+     
 
         <div className={exp.right_product_box}>
         {prod.map((ele) => {
