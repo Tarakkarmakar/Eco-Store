@@ -1,19 +1,35 @@
 import { StarIcon } from "@chakra-ui/icons"
+import { useEffect, useState } from "react"
+import { useNavigate, useSearchParams } from "react-router-dom"
 import card from "./ProductCard.module.css"
 
 const ProductCard = ({ele}) => {
-
-
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [id, setId] = useState("")
  const {image,title,Rating,RatingCount,price,off,_id}=ele
 
 
-let prevousPrice=400/100*off+price
+ const navigate=useNavigate()
+
+
+const sendIDtoParam=(id)=>
+{
+navigate(`/singlePage/${id}`)
+
+}
+// useEffect(()=>{
+
+
+
+// },[sendIDtoParam])
+
+let prevousPrice=Math.floor(price/100*off+price)
   return (
 
 
 
 
-    <div className={card.productCard_main} key={_id}>
+    <div className={card.productCard_main} key={_id} onClick={()=>sendIDtoParam(_id)}>
      
      <div className={card.productCard_image_container}>
         <img src={image} alt="" />

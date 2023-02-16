@@ -4,15 +4,48 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import { StarIcon } from "@chakra-ui/icons";
 import singlePage from "./singlepage.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts } from "../../Redux/Products/action";
+import { useParams, useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 const SinglePage = () => {
+    const dispatch = useDispatch();
+    const [searchParams] = useSearchParams();
+    const { id } = useParams();
+    console.log(id)
+    let [product,setProduct]=useState([])
+ const getData=()=>{
+  
+    axios
+    .get(`${process.env.REACT_APP_API}/customerproducts/${id}`)
+    .then((r) => {
+     
+    setProduct(r.data)
+    })
+
+    .catch((e) => {
+     console.log("error product")
+
+
+    })
+ }
+console.log(product)
+      useEffect(() => {
+       getData()
+    
+      }, [])
     const addToBag=()=>{
 
     }
+    let prevousPrice=Math.floor(product.price/100*product.off+product.price)
   return (
+    <>
+  
     <div key={1} className={singlePage.main_div} >
     <div className={singlePage.img_container}>
       <div>
-        <img src="https://m.media-amazon.com/images/I/61kZoWZu6XL._AC_UL480_FMwebp_QL65_.jpg" />
+        <img src={product.image} />
       </div>
   
     </div>
@@ -30,12 +63,12 @@ const SinglePage = () => {
                 }}
               >
                 {}
-                brand
+               {product.title}
               </p>
             </b>
             <p style={{ fontSize: "20px", color: "#8b8d97" ,marginTop:"10px"}}>
               {}
-              brand
+           {product.brand}
             </p>
           </div>
           <div className={singlePage.ratingDiv} style={{marginTop:"15px",padding:"5px"}}>
@@ -49,10 +82,10 @@ const SinglePage = () => {
             >
               <b>
                 {" "}
-                <p>{} 5</p>
+                <p>{product.Rating} </p>
               </b>
               <p style={{ color: "#48958f" }}>
-                <StarIcon style={{marginTop:"2px"}} fontSize="small" />
+                <StarIcon color="green.300" style={{marginTop:"0px"}} fontSize="small" />
               </p>
             </div>
             <div
@@ -63,7 +96,7 @@ const SinglePage = () => {
               }}
             >
               {" "}
-              <p> | {} 50 </p>
+              <p> | {product.RatingCount} Ratings  </p>
             </div>
           </div>
         </div>
@@ -78,10 +111,11 @@ const SinglePage = () => {
             }}
           >
             <p>
+            Rs.
               {" "}
               <b
                 style={{ color: "darkslategray", fontSize: "22px" }}
-              >{} 800 discount price</b>
+              >{product.price} </b>
             </p>
             <p
               style={{
@@ -91,16 +125,16 @@ const SinglePage = () => {
               }}
             >
               {" "}
-              
+         
               <span style={{ textDecoration: "line-through" }}>
-                {}{" "}
-                product strike
+                {" "}
+                { prevousPrice}  
               </span>
             </p>
             <p style={{ color: "#ee9d20" }}>
               <b style={{ fontSize: "22px" }}>
                 {" "}
-                {}{" "} 14 % OFF
+                {product.off}%{" "} OFF
               </b>
             </p>
           </div>
@@ -207,7 +241,10 @@ const SinglePage = () => {
       </div>
     </div>
   </div>
+ 
+  </>
   )
+
 }
 
 export default SinglePage
