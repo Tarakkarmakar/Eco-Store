@@ -21,6 +21,8 @@ const getProductssError = () => {
   };
 };
 const getProducts = (params) => (dispatch) => {
+
+
   dispatch(getProductsRequest());
   return axios
     .get(`${process.env.REACT_APP_API}/customerproducts`, params)
