@@ -6,6 +6,7 @@ import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
 import account from "../../images/account.jpg";
 import { json, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -18,9 +19,12 @@ const Navbar = () => {
     navigate("/")
   }
  
-let user=JSON.parse(localStorage.getItem("email"))
+let [user,setUser]=useState(localStorage.getItem("email") || "")
 
+useEffect(()=>{
 
+  setUser(localStorage.getItem("email"))
+},[])
 
   return (
     <div className={css.main_nav}>

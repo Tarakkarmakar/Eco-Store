@@ -1,4 +1,6 @@
 import { Route, Routes } from "react-router-dom";
+import { PrivateRoute } from "../App_actions/PrivateRoute";
+import Bag from "./Bag/Bag";
 import Explore from "./explore_page/Explore";
 import Fashion from "./fashion/Fashion";
 import Home from "./Home/Home";
@@ -19,6 +21,9 @@ const MainRoute = () => {
       <Route path="/plants" element={<Plants />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/singlePage/:id" element={<SinglePage />} />
+
+      <Route path="/bag" element={<PrivateRoute ><Bag /></PrivateRoute>} />
+      
     </Routes>
   );
 };
