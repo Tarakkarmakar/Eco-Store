@@ -1,7 +1,6 @@
 .home_main {
   display: flex;
-  background-color: #0093e9;
-  background-image: linear-gradient(160deg, #d3dce1 0%, #c4d7d5 100%);
+ 
   width: 100%;
 }
 .home_left_bar {

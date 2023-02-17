@@ -71,4 +71,33 @@ const getProductsPlants = (params) => (dispatch) => {
       dispatch(getProductssError());
     });
 };
-export { getProducts, getProductsKitchen,getProductsFashion,getProductsPlants };
+
+
+const getSingleData = (id) =>(dispatch)=> {
+  dispatch(getProductsRequest());
+  axios
+    .get(`${process.env.REACT_APP_API}/customerproducts/${id}`)
+    .then((r) => {
+      dispatch(getProductsSuccess(r.data));
+    }).catch((e) => {
+      dispatch(getProductssError());
+      console.log("error product");
+    });
+};
+
+const getUserBagProduct=(email)=>(dispatch)=>{
+
+  dispatch(getProductsRequest());
+  axios
+    .get(`${process.env.REACT_APP_API}/cart`,{
+      headers:{"Authorization":email}
+    })
+    .then((r) => {
+      dispatch(getProductsSuccess(r.data));
+    }).catch((e) => {
+      dispatch(getProductssError());
+      console.log("error product");
+    });
+}
+
+export { getProducts,getSingleData,getUserBagProduct , getProductsKitchen,getProductsFashion,getProductsPlants };
