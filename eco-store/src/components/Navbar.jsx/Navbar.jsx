@@ -18,7 +18,10 @@ const Navbar = () => {
 
     navigate("/")
   }
- 
+  const gotoBag=()=>{
+
+    navigate("/bag")
+  }
 let [user,setUser]=useState(localStorage.getItem("email") || "")
 
 useEffect(()=>{
@@ -63,7 +66,7 @@ useEffect(()=>{
         
 
           <li>Become a Partner</li>
-          <li>
+          <li onClick={gotoBag}>
             <img className={css.nav_bag} src={bag} alt="" />
             <p>Bag</p>
           </li>

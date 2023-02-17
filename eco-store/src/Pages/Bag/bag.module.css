@@ -1,0 +1,25 @@
+.main_div{
+
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+margin: auto
+;
+}
+.left_product_list{
+    width:70%;
+   
+background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+.left_product_list>div{
+
+    height: 40vh;
+}
+.right_total_product{
+height: 70vh;
+    width: 20%;
+  background-color: white;
+}

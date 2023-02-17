@@ -5,7 +5,7 @@ import LocalOfferOutlinedIcon from "@mui/icons-material/LocalOfferOutlined";
 import { StarIcon } from "@chakra-ui/icons";
 import singlePage from "./singlepage.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../Redux/Products/action";
+import { getProducts, getSingleData } from "../../Redux/Products/action";
 import {useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useParams, useSearchParams } from "react-router-dom";
@@ -22,21 +22,18 @@ const toaster = useToast()
   const [count,setCount]=useState(1)
   console.log(id);
   const [userToken,setUserToken]=useState(localStorage.getItem("email"))
-  let [product, setProduct] = useState([]);
-  const getData = () => {
-    axios
-      .get(`${process.env.REACT_APP_API}/customerproducts/${id}`)
-      .then((r) => {
-        setProduct(r.data);
-      }).catch((e) => {
-        console.log("error product");
-      });
-  };
 
+
+  const { isLoading ,product} = useSelector((state) => {
+    return {
+      isLoading: state.Allproducts.isLoading,
+      product :state.Allproducts.products
+    };
+  });
 
   console.log(product);
   useEffect(() => {
-    getData();
+   dispatch(getSingleData(id));
     setUserToken(localStorage.getItem("email"))
   }, []);
 
