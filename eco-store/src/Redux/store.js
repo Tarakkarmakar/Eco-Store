@@ -10,5 +10,5 @@ const rootReducer=combineReducers({Allproducts,signUpReducer})
 
 
 const store = legacy_createStore(rootReducer,composeEnhancers (applyMiddleware(thunk)) );
-console.log(store)
+
 export { store };
