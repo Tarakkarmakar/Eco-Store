@@ -95,7 +95,7 @@
 .Eco_kitchen_box {
   display: grid;
   background-color: white;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5 ,1fr);
   gap: 1rem;
 }
 
@@ -149,7 +149,7 @@ hi */
     width: 20%;
   }
 }
-@media all and (min-width: 0px) and (max-width: 399px) {
+@media all and (min-width: 220px) and (max-width: 399px) {
   .home_right_slider {
     height: 20vh;
   }
@@ -197,5 +197,44 @@ hi */
   .home_right_main {
     width: 95%;
     margin-left: 0%;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 220px) {
+  .home_right_slider {
+    height: 20vh;
+  }
+  .home_heading_slogan {
+    font-size: 35%;
+    padding: 2%;
+  }
+  .Eco_kitchen {
+    margin-right: 41%;
+    font-size: 70%;
+  }
+
+  .Eco_kitchen_box {
+    grid-template-columns: 1fr;
+  }
+
+  .home_right_main {
+    width: 95%;
+    margin-left: 0%;
+  }
+
+  .home_left_bar {
+    display: none;
+    width: 0%;
+    height: 0vh;
+    background-color: rgb(240, 255, 244);
+  }
+
+  .type_of_product {
+    width: 100%;
+  }
+  .Eco_kitchen_box{
+    grid-template-columns: repeat(1,1fr);
+  }
+  .Eco_kitchen_box>div{
+   
   }
 }

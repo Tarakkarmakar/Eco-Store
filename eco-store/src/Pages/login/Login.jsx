@@ -49,6 +49,13 @@ export default function Login() {
       isLoading: state.signUpReducer.isLoading,
     };
   });
+  const isEmail = (email) =>
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  const uppercaseReg  = (password)=> /(?=.*?[A-Z])/i.test(password);
+  const lowercaseReg  =(password)=> /(?=.*?[a-z])/i.test(password);
+  const digitsReg    =(password)=> /(?=.*?[0-9])/i.test(password);
+  const specialCharReg = (password)=>/(?=.*?[#?!@$%^&*-])/i.test(password);
+  const minLengthReg  = (password)=> /.{8,}/i.test(password);
 
   const [isLargerThan992] = useMediaQuery("(min-width: 992px)");
 
@@ -60,6 +67,7 @@ export default function Login() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   useEffect(() => {
+    if(email!=="" && password!==""){
     if (isAuth) {
       toast({
         title: `LogIn Successfull`,
@@ -71,20 +79,26 @@ export default function Login() {
       setTimeout(() => {
         navigate("/");
       }, 1500);
+      setEmail("");
+      setPassword("");
     } else {
       if (isError) {
         toast({
           title: `Invalid User Details!!!`,
           status: "error",
-          duration: 1500,
+          duration: 2000,
           position: "top",
           isClosable: true,
         });
       }
+      setEmail("");
+      setPassword("");
       console.log(isError);
     }
-  }, [isAuth, navigate, toast, isError]);
 
+  }
+  }, [isAuth, isError]);
+console.log(isError)
   const SendSignInRequest = (e) => {
     e.preventDefault();
     if (email === "" && password === "") {
@@ -111,7 +125,31 @@ export default function Login() {
         position: "top",
         isClosable: true,
       });
-    } else {
+   
+    }
+    else if(!isEmail(email)) {
+      
+      toast({
+        title: `Please Enter a valid email !`,
+        status: "error",
+        duration: 2000,
+        position: "top",
+        isClosable: true,
+      });
+    }else if(!uppercaseReg(password) ||
+     !lowercaseReg(password) ||
+     !digitsReg(password) ||
+     !specialCharReg(password) || !minLengthReg(password) ){
+      toast({
+        title: `Password length should greater than 8 and contains
+         one uppercase letter and one speacial charcter ,lowercase letter,number!`,
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      })
+     }
+ else {
       dispatch(
         Loginfunction({
           email: email,
@@ -129,8 +167,7 @@ export default function Login() {
     //   position: "top",
     //   isClosable: true,
     // })
-    setEmail("");
-    setPassword("");
+ 
   };
   return (
     <>
@@ -149,7 +186,7 @@ export default function Login() {
           />
         </Flex>
       ) : (
-        <Flex
+        <Flex   background="white"
           justify="center"
           align="center"
           direction="column"
@@ -161,6 +198,7 @@ export default function Login() {
           </Heading>
 
           <FormControl
+        
             w={isLargerThan992 ? "24%" : "70%"}
             borderRadius="lg"
             p={"3"}
@@ -180,6 +218,7 @@ export default function Login() {
               border={`2px solid`}
               type={"email"}
               id="email"
+              required
             />
 
             <FormHelperText mb={"8px"}>
@@ -199,6 +238,7 @@ export default function Login() {
                 border={`2px solid`}
                 mb={"8px"}
                 id="password"
+                required
               />
 
               <InputRightElement width="4.5rem">

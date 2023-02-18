@@ -5,9 +5,11 @@ import bag from "../../images/bag.png";
 import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
 import account from "../../images/account.jpg";
 import { json, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { AutoSignIn } from "../../Redux/SignUpReducer/action";
 const Navbar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const goSignup = () => {
@@ -22,13 +24,27 @@ const Navbar = () => {
 
     navigate("/bag")
   }
-let [user,setUser]=useState(localStorage.getItem("email") || "")
+let [user,setUser]=useState(JSON.parse(localStorage.getItem("email")) || "")
+
+const { isAuth, isError, isLoading } = useSelector((state) => {
+  return {
+    isAuth: state.signUpReducer.isAuth,
+    isError: state.signUpReducer.isError,
+    isLoading: state.signUpReducer.isLoading,
+  };
+});
 
 useEffect(()=>{
 
-  setUser(localStorage.getItem("email"))
+  setUser(JSON.parse(localStorage.getItem("email")))
+if(user==""){
+  alert("Log in please")
+}else{
+dispatch(AutoSignIn(user))
+alert("Navbar")
+}
 },[])
-
+console.log(isAuth)
   return (
     <div className={css.main_nav}>
       <div className={css.nav_left_section} onClick={gotoHome}>
@@ -51,7 +67,7 @@ useEffect(()=>{
 
       <div className={css.nav_right_section}>
         <ul className={css.nav_right_list}>
-{user!="" ? 
+{isAuth? 
 <li>
   <Avatar>
     <AvatarBadge boxSize='1.25em' bg='blue.500' />

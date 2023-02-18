@@ -23,6 +23,8 @@ import {
   Text,
   useMediaQuery,
   useToast,
+  InputRightElement,
+  InputGroup,
 } from "@chakra-ui/react";
 
 export default function SignUp() {
@@ -31,6 +33,12 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
   const [name, setName] = useState("");
+ 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const toaster = useToast();
+  const [show, setShow] = useState(false);
+  const [isLargerThan992] = useMediaQuery("(min-width: 992px)");
   const GotoHome = () => {
     navigate("/");
   };
@@ -44,11 +52,14 @@ export default function SignUp() {
     },
     shallowEqual
   );
+  const isEmail = (email) =>
+  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  const uppercaseReg  = (password)=> /(?=.*?[A-Z])/i.test(password);
+  const lowercaseReg  =(password)=> /(?=.*?[a-z])/i.test(password);
+  const digitsReg    =(password)=> /(?=.*?[0-9])/i.test(password);
+  const specialCharReg = (password)=>/(?=.*?[#?!@$%^&*-])/i.test(password);
+  const minLengthReg  = (password)=> /.{8,}/i.test(password);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const toaster = useToast();
-  const [isLargerThan992] = useMediaQuery("(min-width: 992px)");
   useEffect(() => {
     if (successfullyCreated) {
       toaster({
@@ -63,11 +74,7 @@ export default function SignUp() {
       }, 2000);
     }
   }, [successfullyCreated]);
-  useEffect(() => {
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
+
   useEffect(() => {
     if (createAccountError) {
       toaster({
@@ -81,6 +88,42 @@ export default function SignUp() {
   }, [createAccountError]);
 
   function SendSignInRequest() {
+
+
+    if(name==="" || email=="" || gender=="" || password==""){
+      toaster({
+        title: `Please Enter all the feilds !`,
+        status: "error",
+        duration: 2000,
+        position: "top",
+        isClosable: true,
+      });
+
+    }else if(!isEmail(email)) {
+      
+      toaster({
+        title: `Please Enter a valid email !`,
+        status: "error",
+        duration: 2000,
+        position: "top",
+        isClosable: true,
+      });
+    }else if(!uppercaseReg(password) ||
+     !lowercaseReg(password) ||
+     !digitsReg(password) ||
+     !specialCharReg(password) || !minLengthReg(password) ){
+      toaster({
+        title: `Password length should greater than 8 and contains
+         one uppercase letter and one speacial charcter ,lowercase letter ,number!`,
+        status: "error",
+        duration: 3000,
+        position: "top",
+        isClosable: true,
+      })
+     }
+
+    
+else{
     dispatch(
       SignUpFunction({
         name: name,
@@ -94,6 +137,8 @@ export default function SignUp() {
     setName("");
     setGender("");
   }
+  }
+  const handleClick = () => setShow(!show);
   return (
     <>
       {isLoading ? (
@@ -113,6 +158,7 @@ export default function SignUp() {
           </Flex>
 
           <Flex
+          background="white"
             justify="center"
             align="center"
             direction="column"
@@ -152,7 +198,7 @@ export default function SignUp() {
                 w={"100%"}
                 h={"40px"}
                 border={`2px solid`}
-                type={"text"}
+              
                 mb={"8px"}
                 id="userName"
               />
@@ -172,26 +218,34 @@ export default function SignUp() {
                 <option value="Female">Female</option>
                 <option value="Others">Other</option>
               </Select>
-              <br />
-
+             
+<FormLabel    fontSize="0.7rem">Password must contains A,a-z,1-9,symbol(@,$) and lengh should be greater than 8</FormLabel>
               {/* email */}
 
               {/* UserType */}
 
               {/* password */}
+            
               {/* <FormLabel htmlFor="password">Enter Password</FormLabel> */}
+           <InputGroup >
               <Input
+      
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
+                placeholder="password"
                 w={"100%"}
                 h={"40px"}
                 value={password}
                 border={`2px solid`}
-                type={"password"}
+                type={show ? "text" : "password"}
                 mb={"8px"}
                 id="password"
               />
-
+     <InputRightElement width="4.5rem">
+                <Button h="1.75rem" size="sm" onClick={handleClick}>
+                  {show ? "Hide" : "Show"}
+                </Button>
+              </InputRightElement>
+              </InputGroup>
               <Button
                 onClick={SendSignInRequest}
                 w={"100%"}

@@ -87,7 +87,8 @@ const kitchen_product=[]
     return (
       <Box padding='6' boxShadow='lg' bg='white'>
   <SkeletonCircle size='10' />
-  <SkeletonText mt='4' noOfLines={10} spacing='4' skeletonHeight='5' />
+  <SkeletonText mt='4' noOfLines={1} spacing='4' skeletonHeight='25' />
+  <SkeletonText mt='4' noOfLines={5} spacing='4' skeletonHeight='5' />
 </Box>
     )
   }
