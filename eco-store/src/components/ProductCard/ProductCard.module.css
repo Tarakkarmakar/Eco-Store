@@ -50,8 +50,11 @@ align-items: center;
 
 @media all and (min-width: 200px) and (max-width: 399px) {
     .product_title{
-font-size: 0.6rem;
+font-size: 0.7rem;
     }
+    /* .productCard_main{
+        height: 80%;
+    } */
     .priceBox>h1{
         font-size: 1.2rem;
     }
@@ -60,7 +63,7 @@ font-size: 0.6rem;
         font-size: 60%;
     }
     .productCard_image_container{
-        height: 44%;
+        height: 40%;
     }
 
     .product_description_box{

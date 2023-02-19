@@ -37,12 +37,10 @@ const { isAuth, isError, isLoading } = useSelector((state) => {
 useEffect(()=>{
 
   setUser(JSON.parse(localStorage.getItem("email")))
-if(user==""){
-  alert("Log in please")
-}else{
-dispatch(AutoSignIn(user))
-alert("Navbar")
+if(user!==""){
+  dispatch(AutoSignIn(user))
 }
+
 },[])
 console.log(isAuth)
   return (
