@@ -53,10 +53,6 @@ setAboutUser(!aboutUser)
 
 }
 
-const logout=()=>{
-  localStorage.setItem("email","")
-  dispatch(SIGNIN_FAILURE)
-}
 
 
 console.log(isAuth)
@@ -112,7 +108,7 @@ console.log(isAuth)
   {aboutUser ? <div className={css.opendiv}>
    <h2>{user}</h2>
 
-   <button onClick={logout}>log out</button>
+   <button >log out</button>
 
   </div> :""}
     </>
