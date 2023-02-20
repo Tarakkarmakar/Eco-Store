@@ -46,6 +46,13 @@ if(user!==""){
 }
 
 },[])
+
+
+const signOut=()=>{
+
+  
+}
+
 console.log(isAuth)
   return (
     <div className={css.main_nav}>
