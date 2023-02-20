@@ -39,7 +39,7 @@ return (
   <div className={fashion.main_container}>
 
 
-      <div className={fashion.left_filter_box}><Filter one="" two="" three="" /></div>
+      <div className={fashion.left_filter_box}><Filter one="N&T fashion" two="Dennis Lingo" three="Allen soly" /></div>
 
       <div className={fashion.right_product_box}>
       {prod.map((ele) => {

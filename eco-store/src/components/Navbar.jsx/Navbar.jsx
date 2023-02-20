@@ -8,9 +8,11 @@ import { json, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AutoSignIn } from "../../Redux/SignUpReducer/action";
+import { SIGNIN_FAILURE } from "../../Redux/SignUpReducer/actionTypes";
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [aboutUser,setAboutUser]=useState(false)
 
   const goSignup = () => {
     navigate("/login");
@@ -46,11 +48,20 @@ if(user!==""){
 }
 
 },[])
+const openDiv=()=>{
+setAboutUser(!aboutUser)
 
+}
+
+const logout=()=>{
+  localStorage.setItem("email","")
+  dispatch(SIGNIN_FAILURE)
+}
 
 
 console.log(isAuth)
   return (
+    <>
     <div className={css.main_nav}>
       <div className={css.nav_left_section} onClick={gotoHome}>
         <img className={css.nav_logo} src={logo} alt="" />
@@ -73,7 +84,7 @@ console.log(isAuth)
       <div className={css.nav_right_section}>
         <ul className={css.nav_right_list}>
 {isAuth? 
-<li>
+<li onClick={openDiv}>
   <Avatar>
     <AvatarBadge boxSize='1.25em' bg='blue.500' />
   </Avatar>
@@ -98,6 +109,13 @@ console.log(isAuth)
         <HamburgerIcon h="2.3rem" w="2.2rem" />
       </div>
     </div>
+  {aboutUser ? <div className={css.opendiv}>
+   <h2>{user}</h2>
+
+   <button onClick={logout}>log out</button>
+
+  </div> :""}
+    </>
   );
 };
 
