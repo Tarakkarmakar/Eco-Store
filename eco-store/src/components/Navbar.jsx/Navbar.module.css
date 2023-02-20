@@ -137,3 +137,18 @@ margin-right: 4%;
 width: 50px;
 }
 }
+
+.opendiv{
+    width: 28%;
+    height: 15vh;
+    margin-left: 47%;;
+    background-color: rgb(215, 215, 215);
+    position: absolute;
+    border-radius: 0.3rem;
+}
+.opendiv>button{
+    color: white;
+    background-color: rgb(92, 92, 178);
+    width: 20%;
+    border-radius: 1.1rem;
+}
