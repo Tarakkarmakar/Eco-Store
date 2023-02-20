@@ -48,10 +48,6 @@ if(user!==""){
 },[])
 
 
-const signOut=()=>{
-
-  
-}
 
 console.log(isAuth)
   return (
