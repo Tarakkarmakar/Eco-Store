@@ -111,7 +111,19 @@ else{
           <h2 className={csshome.home_heading_slogan}>
             Shop Natural Products to Save our World
           </h2>
+
+          {/* //for small screen */}
+          <div  className={csshome.typebox_small}>
+          <div className={csshome.type_of_product_small} onClick={gotoPlants}>Plants</div>
+       <div className={csshome.type_of_product_small} onClick={gotoFashion}>Fashion</div>
+       <div className={csshome.type_of_product_small} onClick={gotoKitchen}>Kitchen</div>
+
+       <div className={csshome.type_of_product_small} onClick={gotoExplore}>Explore</div>
+          </div>
+          
+
         </div>
+        {/* ------- */}
         <br />
         <div className={csshome.home_right_slider}></div>
 
