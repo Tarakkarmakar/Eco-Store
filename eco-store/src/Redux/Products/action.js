@@ -76,7 +76,7 @@ const getProductsPlants = (params) => (dispatch) => {
 const getSingleData = (id) =>(dispatch)=> {
   dispatch(getProductsRequest());
   axios
-    .get(`${process.env.REACT_APP_API}/customerproducts/${id}`)
+    .get(`${process.env.REACT_APP_API}/customerproducts/single/${id}`)
     .then((r) => {
       dispatch(getProductsSuccess(r.data));
     }).catch((e) => {

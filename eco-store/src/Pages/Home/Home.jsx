@@ -112,6 +112,7 @@ else{
             Shop Natural Products to Save our World
           </h2>
         </div>
+        <br />
         <div className={csshome.home_right_slider}></div>
 
   
@@ -127,7 +128,7 @@ else{
           })
         }
           </div>
-
+<br />
           <span className={csshome.Eco_kitchen}>Eco-Plants</span>
           <div className={csshome.Eco_kitchen_box}>
         
@@ -140,7 +141,7 @@ else{
               }
             })}
           </div>
-
+<br />
           <span className={csshome.Eco_kitchen}>Eco-fashion</span>
           <div className={csshome.Eco_kitchen_box}>
           { plants_product.map((ele,index) => {

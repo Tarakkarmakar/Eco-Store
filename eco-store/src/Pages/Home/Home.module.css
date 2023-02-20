@@ -1,10 +1,10 @@
 .home_main {
   display: flex;
- 
-  width: 100%;
+ margin: auto;
+  
 }
 .home_left_bar {
-  height: 50vh;
+  height: 40vh;
   width: 14%;
   position: fixed;
   background-color: white;
@@ -13,7 +13,7 @@
   border-bottom-right-radius: 1.2rem;
 }
 .type_of_product {
-  font-size: 1.2rem;
+  font-size:1rem;
   width: 70%;
   margin: auto;
 
@@ -84,7 +84,7 @@
 
 .Eco_kitchen {
   font-size: 1.4rem;
-  margin-right: 80%;
+  /* margin-right: 80%; */
   margin-top: 3vh;
   padding-left: 1%;
   padding-right: 1%;
@@ -97,6 +97,19 @@
   background-color: white;
   grid-template-columns: repeat(5 ,1fr);
   gap: 1rem;
+}
+.home_left_bar >div{
+  height: 14%;
+}
+@media all and (min-width: 1031px) and (max-width: 1300px) {
+  .home_left_bar{
+    height: 35vh;
+  }
+
+ .Eco_kitchen{
+ 
+margin-right: 85%;
+ }
 }
 
 @media all and (min-width: 701px) and (max-width: 1030px) {
@@ -118,11 +131,8 @@
   }
   .Eco_kitchen_box {
     grid-template-columns: 1fr 1fr 1fr;
-  }
-  .Eco_kitchen {
-    margin-right: 75%;
-  }
-}
+
+}}
 /* 
 hi */
 @media all and (min-width: 400px) and (max-width: 701px) {
@@ -150,6 +160,10 @@ hi */
   }
 }
 @media all and (min-width: 220px) and (max-width: 399px) {
+  .home_right_main{
+    margin: auto;
+    width: 100%;
+  }
   .home_right_slider {
     height: 20vh;
   }
@@ -158,14 +172,11 @@ hi */
   }
   .Eco_kitchen {
     margin-right: 1%;
-  }
-
-  .Eco_kitchen_box {
-    grid-template-columns: 1fr;
+   
   }
 
   .home_right_main {
-    width: 95%;
+    width: 100%;
     margin-left: 0%;
   }
 
@@ -181,10 +192,13 @@ hi */
   }
   .Eco_kitchen_box {
     grid-template-columns: 1fr 1fr;
-    gap: 3%;
+    width: 100%;
+    gap: 2%;
+    height: 70%;
   }
+
   .Eco_kitchen {
-    margin-right: 1%;
+    margin-right: 45%;
   }
 }
 @media all and (min-width: 400px) and (max-width: 600px) {
@@ -217,7 +231,7 @@ hi */
   }
 
   .home_right_main {
-    width: 95%;
+    width: 100%;
     margin-left: 0%;
   }
 
@@ -234,7 +248,5 @@ hi */
   .Eco_kitchen_box{
     grid-template-columns: repeat(1,1fr);
   }
-  .Eco_kitchen_box>div{
-   
-  }
+
 }
