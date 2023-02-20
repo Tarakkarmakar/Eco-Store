@@ -7,6 +7,7 @@ import Home from "./Home/Home";
 import Kitchen from "./kitchen/Kitchen";
 import Login from "./login/Login";
 import SinglePage from "./pages/singlePage";
+import Partner from "./Partner/Partner";
 import Plants from "./plants/Plants";
 import SignUp from "./Signup/SignUp";
 
@@ -23,7 +24,7 @@ const MainRoute = () => {
       <Route path="/singlePage/:id" element={<SinglePage />} />
 
       <Route path="/bag" element={<PrivateRoute ><Bag /></PrivateRoute>} />
-      
+      <Route path="/partner" element={<Partner />} />
     </Routes>
   );
 };

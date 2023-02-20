@@ -106,9 +106,10 @@
     height: 35vh;
   }
 
-  .home_right_slider {
-    height: 45vh;
-  }
+ .Eco_kitchen{
+ 
+margin-right: 85%;
+ }
 }
 
 @media all and (min-width: 701px) and (max-width: 1030px) {

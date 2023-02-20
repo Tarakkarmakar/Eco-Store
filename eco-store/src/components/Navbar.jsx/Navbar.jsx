@@ -24,6 +24,10 @@ const Navbar = () => {
 
     navigate("/bag")
   }
+  const gotoPartner=()=>{
+
+    navigate("/partner")
+  }
 let [user,setUser]=useState(JSON.parse(localStorage.getItem("email")) || "")
 
 const { isAuth, isError, isLoading } = useSelector((state) => {
@@ -79,7 +83,7 @@ console.log(isAuth)
       
         
 
-          <li>Become a Partner</li>
+          <li onClick={gotoPartner}>Become a Partner</li>
           <li onClick={gotoBag}>
             <img className={css.nav_bag} src={bag} alt="" />
             <p>Bag</p>

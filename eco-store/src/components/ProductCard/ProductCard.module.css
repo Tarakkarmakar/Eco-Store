@@ -3,6 +3,10 @@ border: 1px solid rgb(216, 207, 207);
 
 
 }
+
+.productCard_main:hover{
+    cursor: pointer;
+}
 .productCard_image_container{
  padding:3%;
     height: 50%;
