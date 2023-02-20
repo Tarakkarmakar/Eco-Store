@@ -1,57 +1,55 @@
-.main_nav{
-position: sticky;
-top: 0;
-border: 1px solid black;
-    height: 16vh;
-display: flex;
-    width: 100%;
-align-items: center;
+.main_nav {
+  position: sticky;
+  top: 0;
+  border: 1px solid black;
+  height: 16vh;
+  display: flex;
+  width: 100%;
+  align-items: center;
   z-index: 1000;
-background-color: green;
-    padding-left: 5%;
-    padding-right: 2%;
+  background-color: green;
+  padding-left: 5%;
+  padding-right: 2%;
 }
-.nav_left_section{
+.nav_left_section {
   background-color: #ffffff;
   width: 60px;
-  height:60px;
-  box-shadow: 1px 8px 2px 0px rgba(17,242,21,1);
-  
+  height: 60px;
+  box-shadow: 1px 8px 2px 0px rgba(17, 242, 21, 1);
+
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.nav_logo{
-   width: 70%;
-   cursor: pointer;
+.nav_logo {
+  width: 70%;
+  cursor: pointer;
 }
-.nav_company_name{
-    color: white;
-    font-weight: 700;
-    margin-left: 1%;
-    align-items: baseline;
+.nav_company_name {
+  color: white;
+  font-weight: 700;
+  margin-left: 1%;
+  align-items: baseline;
 }
-.nav_serach_section{
+.nav_serach_section {
+  margin-left: 10%;
+}
 
-    margin-left: 10%;
-}
+.nav_right_section {
+  display: flex;
+  margin-left: 4%;
 
-.nav_right_section{
-    display: flex;
-    margin-left: 4%;
- 
-    width: 50%;
-justify-content: space-between;
+  width: 50%;
+  justify-content: space-between;
 }
-.nav_right_list{
-    display: flex;
-    margin-left: 2%;
-
+.nav_right_list {
+  display: flex;
+  margin-left: 2%;
 }
-.nav_right_list>li{
-    list-style-type: none;
- display: flex;
+.nav_right_list > li {
+  list-style-type: none;
+  display: flex;
   width: 33%;
   margin-right: 5%;
   align-items: center;
@@ -59,96 +57,85 @@ justify-content: space-between;
   font-weight: 700;
   position: relative;
 }
-.nav_right_list>li:hover{
-    cursor: pointer;
+.nav_right_list > li:hover {
+  cursor: pointer;
 }
-.nav_right_list>li::after{
-   
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(17,242,21,1);
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+.nav_right_list > li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(17, 242, 21, 1);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
-.nav_right_list>li:hover::after{
-    
-    transform: scaleX(1);
+.nav_right_list > li:hover::after {
+  transform: scaleX(1);
   transform-origin: bottom left;
 }
-.nav_bag{
-    width: 29%;
-    margin-left: 15%;
-   
+.nav_bag {
+  width: 29%;
+  margin-left: 15%;
 }
 
-.nav_account{
-    width: 27%;
-border-radius: 80%;
-margin-right: 4%;
+.nav_account {
+  width: 27%;
+  border-radius: 80%;
+  margin-right: 4%;
 }
-.nav_hamberger{
-    display: none;
-
+.nav_hamberger {
+  display: none;
 }
 @media all and (min-width: 501px) and (max-width: 1030px) {
- 
-    .main_nav{
-        height: 14vh;
-    }
-    .nav_right_section{
-        display: none;
-        width: 0%;
-      
-    }
-    .nav_hamberger{
-        display: block;
-       margin-left: 40%;
-
-        
-    }
-    .nav_left_section{
-        height: 50px;
+  .main_nav {
+    height: 14vh;
+  }
+  .nav_right_section {
+    display: none;
+    width: 0%;
+  }
+  .nav_hamberger {
+    display: block;
+    margin-left: 40%;
+  }
+  .nav_left_section {
+    height: 50px;
     width: 70px;
-    }
-
+  }
 }
 @media all and (min-width: 0px) and (max-width: 500px) {
-
-.nav_hamberger{
+  .nav_hamberger {
     display: block;
-    
-}
-.main_nav{
+  }
+  .main_nav {
     height: 10vh;
-}
-.nav_right_section{
+  }
+  .nav_right_section {
     display: none;
-}
-.nav_serach_section{
+  }
+  .nav_serach_section {
     margin-right: 3%;
-}
-.nav_left_section{
+  }
+  .nav_left_section {
     height: 30px;
-width: 50px;
-}
+    width: 50px;
+  }
 }
 
-.opendiv{
-    width: 28%;
-    height: 15vh;
-    margin-left: 47%;;
-    background-color: rgb(215, 215, 215);
-    position: absolute;
-    border-radius: 0.3rem;
+.opendiv {
+  width: 28%;
+  height: 15vh;
+  margin-left: 47%;
+  background-color: rgb(215, 215, 215);
+  position: absolute;
+  border-radius: 0.3rem;
 }
-.opendiv>button{
-    color: white;
-    background-color: rgb(92, 92, 178);
-    width: 20%;
-    border-radius: 1.1rem;
+.opendiv > button {
+  color: white;
+  background-color: rgb(92, 92, 178);
+  width: 20%;
+  border-radius: 1.1rem;
 }
