@@ -1,68 +1,55 @@
-.main_div{
+.main_div {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin: auto;
+}
+.left_product_list {
+  width: 70%;
 
-    display: flex;
-    flex-direction: row;
-    width: 90%;
-margin: auto
-;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
 }
-.left_product_list{
-    width:70%;
-   
-background-color: white;
-    display: grid;
-    grid-template-columns:repeat(3 ,1fr) ;
-    gap:1.2rem
-    
+.left_product_list > div {
+  height: 40vh;
 }
-.left_product_list>div{
-
-    height: 40vh;
-}
-.right_total_product{
-height: 70vh;
-    width: 20%;
+.right_total_product {
+  height: 70vh;
+  width: 20%;
   background-color: white;
 }
 
-
 @media all and (min-width: 701px) and (max-width: 1030px) {
-    .left_product_list{
-        width:70%;
-       
-    background-color: white;
-        display: grid;
-        grid-template-columns:repeat(2 ,1fr) ;
-        gap:1.2rem
-        
-    }
-}
+  .left_product_list {
+    width: 70%;
 
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+}
 
 @media all and (min-width: 400px) and (max-width: 701px) {
-    .left_product_list{
-        width:70%;
-       
-    background-color: white;
-        display: grid;
-        grid-template-columns:repeat(2 ,1fr) ;
-        gap:1.2rem
-        
-    }
-   
+  .left_product_list {
+    width: 70%;
 
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
 }
 
-
 @media all and (min-width: 220px) and (max-width: 399px) {
-    .left_product_list{
-        width:70%;
-       
-    background-color: white;
-        display: grid;
-        grid-template-columns:repeat(1 ,1fr) ;
-        gap:1.2rem
-        
-    }
+  .left_product_list {
+    width: 70%;
 
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.2rem;
+  }
 }
