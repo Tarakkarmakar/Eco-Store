@@ -8,6 +8,10 @@ import {
   Avatar,
   AvatarBadge,
   useToast,
+  Menu,
+  MenuList,
+  MenuItem,
+  MenuButton,
 } from "@chakra-ui/react";
 import logo from "../../images/logo.png";
 import bag from "../../images/bag.png";
@@ -22,13 +26,17 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [aboutUser, setAboutUser] = useState(false);
+  const [menuState,setMenuState]=useState(false)
   const toast = useToast();
-  const goSignup = () => {
-    navigate("/login");
-  };
+  let [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("email")) || ""
+  );
   const [logedUser, setloggedUser] = useState(true);
   const gotoHome = () => {
     navigate("/");
+  };
+  const goSignup = () => {
+    navigate("/login");
   };
   const gotoBag = () => {
     navigate("/bag");
@@ -36,9 +44,7 @@ const Navbar = () => {
   const gotoPartner = () => {
     navigate("/partner");
   };
-  let [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("email")) || ""
-  );
+ 
 
   const { isAuth, isError, isLoading } = useSelector((state) => {
     return {
@@ -51,10 +57,13 @@ const Navbar = () => {
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("email")));
   }, []);
+
   const openDiv = () => {
     setUser(JSON.parse(localStorage.getItem("email")));
     setAboutUser(!aboutUser);
   };
+
+  
 
   const logOut = () => {
     localStorage.setItem("email", null);
@@ -122,7 +131,19 @@ const Navbar = () => {
         </div>
 
         <div className={css.nav_hamberger}>
-          <HamburgerIcon h="2.3rem" w="2.2rem" />
+
+
+        <Menu>
+  <MenuButton><HamburgerIcon h="2.3rem" w="2.2rem" onClick={()=>setMenuState(!menuState)}/></MenuButton>
+  <MenuList>
+    <MenuItem >{isAuth ? <h3>{user }</h3> :<h3 onClick={goSignup}>Login/SignUp</h3>}</MenuItem>
+    <MenuItem  onClick={gotoBag}>Bag</MenuItem>
+    <MenuItem onClick={gotoPartner}>Become a Partner</MenuItem>
+    <MenuItem>Help</MenuItem>
+  </MenuList>
+</Menu>
+       
+         
         </div>
       </div>
       {aboutUser && logedUser ? (
@@ -134,6 +155,9 @@ const Navbar = () => {
       ) : (
         ""
       )}
+
+    
+       
     </>
   );
 };
