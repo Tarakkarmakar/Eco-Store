@@ -1,0 +1,441 @@
+.home_main {
+  display: flex;
+ margin: auto;
+  
+}
+.home_left_bar {
+  height: 40vh;
+  width: 14%;
+  position: fixed;
+  background-color: white;
+  border: 1px solid;
+  border-bottom-left-radius: 1.2rem;
+  border-bottom-right-radius: 1.2rem;
+}
+
+.type_of_product {
+  font-size:24px;
+  width: 70%;
+  margin: auto;
+
+  margin-top: 3vh;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-radius: 1.3rem;
+  color: aliceblue;
+
+  background-image: url(../../images/bark.png);
+}
+.typebox_small{
+
+
+ display: none;
+
+}
+.type_of_product_small{
+font-size: 18px;
+}
+.type_of_product_small:hover{
+  cursor: pointer;
+}
+.type_of_product:hover {
+  cursor: pointer;
+}
+.home_right_main {
+  width: 78%;
+display: flex;
+flex-direction: column;
+  margin-left: 20%;
+}
+.home_heading_box {
+    width: 49%;
+  height: 5vh;
+  font-size: 18px;
+  margin: auto;
+  border-radius: 2.1rem;
+  background-image: url(../../images/bark.png);
+  margin-bottom: 1%;
+  margin-top: 2%;
+ 
+  font-style: initial;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    padding: 0.5%;
+    padding-right: 0.5%;
+}
+
+.home_right_slider {
+  border: 2px solid black;
+  background-image: url(../../images/slide_1.jpg);
+  width: 80%;
+  height: 60vh;
+  border-radius: 1.2rem;
+  margin-left: 8%;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  background-size: 100% 100%;
+  animation: changeImage 20s 2s alternate infinite;
+}
+@keyframes changeImage {
+  0% {
+    background-image: url(../../images/slide_1.jpg);
+  }
+  25% {
+    background-image: url(../../images/slide_2.jpg);
+  }
+  50% {
+    background-image: url(../../images/slide_3.jpg);
+  }
+  75% {
+    background-image: url(../../images/slide_4.jpg);
+  }
+  100% {
+    background-image: url(../../images/slide_5.png);
+  }
+}
+
+.Eco_kitchen {
+  font-size: 1.1rem;
+  /* margin-right: 80%; */
+  width: 120px;
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+  padding-left: 1%;
+  padding-right: 1%;
+  border-radius: 1.3rem;
+  color: aliceblue;
+  background-image: url(../../images/bark.png);
+}
+.Eco_kitchen_box {
+  display: grid;
+  background-color: white;
+  grid-template-columns: repeat(5 ,1fr);
+  gap: 1rem;
+}
+.home_left_bar >div{
+  height: 14%;
+}
+@media all and (min-width: 1031px) and (max-width: 1300px) {
+  .home_left_bar{
+    height: 35vh;
+  }
+
+ .Eco_kitchen{
+ 
+margin-right: 85%;
+ }
+ .home_heading_slogan{
+
+  font-size: 18px;
+ }
+ .type_of_product {
+  
+  font-size: 17px;
+}
+
+}
+
+@media all and (min-width: 701px) and (max-width: 1030px) {
+  .home_right_slider {
+    height: 40vh;
+  }
+  .Eco_kitchen{
+ 
+    margin-right: 85%;
+     }
+  .home_heading_box {
+    
+    height: 5vh;
+    font-size: 17px;
+  }
+ 
+  .home_left_bar {
+    width: 20%;
+  }
+  .home_right_main {
+    width: 76%;
+    margin-left: 23%;
+  }
+  .Eco_kitchen_box {
+    grid-template-columns: repeat(3, 1fr);
+
+}
+.type_of_product {
+  
+  font-size: 22px;
+}}
+/* 
+hi */
+@media all and (min-width: 500px) and (max-width: 600px) {
+  .typebox_small{
+    display: flex;
+    width: 105%;
+   height: 60px;
+    margin-left: -18%;
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-top: 77vh;
+    display: flex;
+    font-size: 16px;
+    position: fixed;
+  background-color: aqua;
+  justify-content: space-between;
+  background-image: url(../../images/bark.png);
+  align-items: center;
+  }
+  .type_of_product_small{
+    cursor: pointer;
+
+    font-size: 1.2rem;
+    align-items: center;
+    
+
+  }
+}
+@media all and (min-width: 400px) and (max-width: 499px) {
+  .typebox_small{
+    display: flex;
+    width: 105%;
+   height: 60px;
+    margin-left: -18%;
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-top: 81vh;
+    display: flex;
+    font-size: 16px;
+    position: fixed;
+  background-color: aqua;
+  justify-content: space-between;
+  background-image: url(../../images/bark.png);
+  align-items: center;
+  }
+  .type_of_product_small{
+    cursor: pointer;
+
+    font-size: 1.2rem;
+    align-items: center;
+    
+
+  }
+}
+@media all and (min-width: 400px) and (max-width: 701px) {
+  .home_right_slider {
+   height: 30vh;
+  }
+  
+  .type_of_product_small:hover{
+    cursor: pointer;
+  }
+  .home_heading_slogan {
+    font-size: 70%;
+  }
+
+  .Eco_kitchen {
+    margin-left: 2%;
+  }
+  .home_heading_box {
+    width: 65%;
+    margin-bottom: 3%;
+    font-size: 17px;
+    height: 3vh;
+  }
+  .Eco_kitchen_box {
+    margin-left: 3%;
+    grid-template-columns:repeat(2, 1fr) ;
+   
+  }
+  
+  .home_left_bar {
+    width: 20%;
+  }
+  .type_of_product{
+    font-size: 20px;
+  }
+  
+
+}
+@media all and (min-width: 220px) and (max-width: 399px) {
+  .home_right_main{
+    margin: auto;
+    width: 100%;
+  }
+  .typebox_small{
+    display: flex;
+    width: 105%;
+   height: 60px;
+    margin-left: -18%;
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-top: 81vh;
+    display: flex;
+    font-size: 16px;
+    position: fixed;
+  background-color: aqua;
+  justify-content: space-between;
+  background-image: url(../../images/bark.png);
+  align-items: center;
+  }
+  .type_of_product_small{
+    cursor: pointer;
+    margin-right: 7%;
+    font-size: 0.8rem;
+    align-items: center;
+    
+
+  }
+  .type_of_product_small:hover{
+    cursor: pointer;
+  }
+
+  .home_right_slider {
+    height: 20vh;
+  }
+  .home_heading_slogan {
+    font-size: 60%;
+  }
+  .Eco_kitchen {
+    margin-right: 1%;
+   
+  }
+  .home_heading_box {
+    width: 65%;
+    margin-bottom: 3%;
+    font-size: 13px;
+    height: 3vh;
+  }
+
+  .home_right_main {
+    width: 100%;
+    margin-left: 0%;
+  }
+
+  .home_left_bar {
+    display: none;
+    width: 0%;
+    height: 0vh;
+    background-color: rgb(240, 255, 244);
+  }
+  
+  .type_of_product {
+    width: 100%;
+    font-size: 15px;
+  }
+  
+  .Eco_kitchen_box {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 2%;
+    height: 70%;
+  }
+
+  .Eco_kitchen {
+    margin-right: 45%;
+  }
+}
+@media all and (min-width: 400px) and (max-width: 600px) {
+  .home_left_bar {
+    display: none;
+    width: 0%;
+    height: 0vh;
+    background-color: rgb(240, 255, 244);
+  }
+
+  .type_of_product{
+    margin-right: 5%;
+  }
+  .home_right_main {
+    width: 95%;
+    margin-left: 0%;
+  }
+  .home_heading_box {
+    width: 65%;
+    margin-bottom: 3%;
+    font-size: 13px;
+    height: 3vh;
+  }
+}
+@media all and (min-width: 0px) and (max-width: 220px) {
+  .home_right_slider {
+    height: 16vh;
+    
+  }
+  .typebox_small{
+    display: flex;
+    width: 105%;
+   height: 16vh;
+    margin-left: -18%;
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-top: 80vh;
+    display: flex;
+    font-size: 10px;
+    position: fixed;
+  background-color: aqua;
+  justify-content: space-between;
+  }
+  .typebox_small>div:hover{
+    cursor: pointer;
+  }
+  .home_heading_slogan {
+    font-size: 35%;
+    padding: 2%;
+  }
+  .Eco_kitchen {
+    margin-right: 61%;
+    font-size: 70%;
+  }
+
+  .Eco_kitchen_box {
+display: flex;
+flex-direction: column;
+
+  }
+ 
+  .Eco_kitchen_box>div{
+    height: 20vh;
+    width: 80%;
+    margin: auto;
+  }
+  .home_right_main {
+    width: 100%;
+    margin-left: 0%;
+  }
+  .home_heading_box {
+    width: 55%;
+    margin-bottom: 3%;
+    font-size: 11px;
+    height: 3vh;
+  }
+  .home_left_bar {
+    display: none;
+    width: 0%;
+    height: 0vh;
+    background-color: rgb(240, 255, 244);
+  }
+
+  .type_of_product {
+    width: 100%;
+  }
+  .Eco_kitchen_box{
+    grid-template-columns: repeat(1,1fr);
+  }
+
+}
+@media all and (min-width: 280px) and (max-width: 400px) {
+.Eco_kitchen_box>div{
+  
+ height: 85%;
+}
+.home_heading_box{
+
+  font-size: 0.6rem;
+}
+.Eco_kitchen_box{
+row-gap: -5vh;
+margin-bottom:  -10%;
+}
+
+}
