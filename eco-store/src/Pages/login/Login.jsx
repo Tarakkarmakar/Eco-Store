@@ -50,13 +50,13 @@ export default function Login() {
     };
   });
   const isEmail = (email) =>
-  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
-  const uppercaseReg  = (password)=> /(?=.*?[A-Z])/i.test(password);
-  const lowercaseReg  =(password)=> /(?=.*?[a-z])/i.test(password);
-  const digitsReg    =(password)=> /(?=.*?[0-9])/i.test(password);
-  const specialCharReg = (password)=>/(?=.*?[#?!@$%^&*-])/i.test(password);
-  const minLengthReg  = (password)=> /.{8,}/i.test(password);
-
+    /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
+  const uppercaseReg = (password) => /(?=.*?[A-Z])/i.test(password);
+  const lowercaseReg = (password) => /(?=.*?[a-z])/i.test(password);
+  const digitsReg = (password) => /(?=.*?[0-9])/i.test(password);
+  const specialCharReg = (password) => /(?=.*?[#?!@$%^&*-])/i.test(password);
+  const minLengthReg = (password) => /.{8,}/i.test(password);
+  const [loginRequest, setLoginRequest] = useState(false);
   const [isLargerThan992] = useMediaQuery("(min-width: 992px)");
 
   // useEffect(() => {
@@ -67,38 +67,37 @@ export default function Login() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   useEffect(() => {
-    if(email!=="" && password!==""){
-    if (isAuth) {
-      toast({
-        title: `LogIn Successfull`,
-        status: "success",
-        duration: 500,
-        position: "top",
-        isClosable: true,
-      });
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
-      setEmail("");
-      setPassword("");
-    } else {
-      if (isError) {
+    if (email !== "" && password !== "") {
+      if (isAuth) {
         toast({
-          title: `Invalid User Details!!!`,
-          status: "error",
-          duration: 2000,
+          title: `LogIn Successfull`,
+          status: "success",
+          duration: 500,
           position: "top",
           isClosable: true,
         });
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+        setEmail("");
+        setPassword("");
+      } else {
+        if (isError) {
+          toast({
+            title: `Invalid User Details!!!`,
+            status: "error",
+            duration: 2000,
+            position: "top",
+            isClosable: true,
+          });
+        }
+        setEmail("");
+        setPassword("");
+        console.log(isError);
       }
-      setEmail("");
-      setPassword("");
-      console.log(isError);
     }
-
-  }
   }, [isAuth, isError]);
-console.log(isError)
+  console.log(isError, isAuth);
   const SendSignInRequest = (e) => {
     e.preventDefault();
     if (email === "" && password === "") {
@@ -125,10 +124,7 @@ console.log(isError)
         position: "top",
         isClosable: true,
       });
-   
-    }
-    else if(!isEmail(email)) {
-      
+    } else if (!isEmail(email)) {
       toast({
         title: `Please Enter a valid email !`,
         status: "error",
@@ -136,10 +132,13 @@ console.log(isError)
         position: "top",
         isClosable: true,
       });
-    }else if(!uppercaseReg(password) ||
-     !lowercaseReg(password) ||
-     !digitsReg(password) ||
-     !specialCharReg(password) || !minLengthReg(password) ){
+    } else if (
+      !uppercaseReg(password) ||
+      !lowercaseReg(password) ||
+      !digitsReg(password) ||
+      !specialCharReg(password) ||
+      !minLengthReg(password)
+    ) {
       toast({
         title: `Password length should greater than 8 and contains
          one uppercase letter and one speacial charcter ,lowercase letter,number!`,
@@ -147,15 +146,15 @@ console.log(isError)
         duration: 3000,
         position: "top",
         isClosable: true,
-      })
-     }
- else {
+      });
+    } else {
       dispatch(
         Loginfunction({
           email: email,
           password: password,
         })
       );
+      setLoginRequest(!loginRequest);
     }
 
     // }
@@ -167,7 +166,6 @@ console.log(isError)
     //   position: "top",
     //   isClosable: true,
     // })
- 
   };
   return (
     <>
@@ -186,7 +184,8 @@ console.log(isError)
           />
         </Flex>
       ) : (
-        <Flex   background="white"
+        <Flex
+          background="white"
           justify="center"
           align="center"
           direction="column"
@@ -198,7 +197,6 @@ console.log(isError)
           </Heading>
 
           <FormControl
-        
             w={isLargerThan992 ? "24%" : "70%"}
             borderRadius="lg"
             p={"3"}
