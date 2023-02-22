@@ -6,10 +6,11 @@ import Fashion from "./fashion/Fashion";
 import Home from "./Home/Home";
 import Kitchen from "./kitchen/Kitchen";
 import Login from "./login/Login";
-import SinglePage from "./pages/singlePage";
+
 import Partner from "./Partner/Partner";
 import Plants from "./plants/Plants";
 import SignUp from "./Signup/SignUp";
+import SinglePage from "./singleProduct/singlePage";
 
 const MainRoute = () => {
   return (
@@ -21,7 +22,7 @@ const MainRoute = () => {
       <Route path="/fashion" element={<Fashion />} />
       <Route path="/plants" element={<Plants />} />
       <Route path="/explore" element={<Explore />} />
-      <Route path="/singlePage/:id" element={<SinglePage />} />
+      <Route path="/singlePage/:id" element={<SinglePage/>} />
 
       <Route path="/bag" element={<PrivateRoute ><Bag /></PrivateRoute>} />
       <Route path="/partner" element={<Partner />} />

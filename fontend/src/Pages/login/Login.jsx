@@ -3,7 +3,7 @@ import { AiFillApple } from "react-icons/ai"; // FcGoogle
 import { FcGoogle } from "react-icons/fc";
 import { AiFillFacebook } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import logo from "../../images/logo.png";
 
@@ -96,7 +96,7 @@ export default function Login() {
         console.log(isError);
       }
     }
-  }, [isAuth, isError]);
+  }, [isAuth, isError,isLoading]);
   console.log(isError, isAuth);
   const SendSignInRequest = (e) => {
     e.preventDefault();
@@ -157,16 +157,15 @@ export default function Login() {
       setLoginRequest(!loginRequest);
     }
 
-    // }
-    /* if email is not found */
-    // toast({
-    //   title: `User not registered !!!`,
-    //   status: "error",
-    //   duration: 1500,
-    //   position: "top",
-    //   isClosable: true,
-    // })
+
   };
+  useEffect(()=>{
+    if(isAuth){
+   navigate("/")
+    }
+  })
+const location=useLocation()
+  console.log(location)
   return (
     <>
       <Flex color="black" alignItems="center">

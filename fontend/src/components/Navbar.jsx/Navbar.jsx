@@ -56,6 +56,10 @@ const Navbar = () => {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("email")));
+    if(user!="" || user!==null){
+
+      dispatch(AutoSignIn(user))
+    }
   }, []);
 
   const openDiv = () => {
@@ -68,7 +72,7 @@ const Navbar = () => {
   const logOut = () => {
     localStorage.setItem("email", null);
     setUser(JSON.parse(localStorage.getItem("email")));
-
+    localStorage.setItem("userDetails",null)
     setAboutUser(!aboutUser);
 
     dispatch(AutoSignIn("empty"));
