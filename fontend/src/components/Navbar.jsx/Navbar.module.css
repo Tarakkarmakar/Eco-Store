@@ -90,6 +90,21 @@
 .nav_hamberger {
   display: none;
 }
+.menuBar{
+  display: block;
+  /* flex-direction: column;
+  width: 27%;
+  height: 18vh;
+  align-items: center;
+  background-color: rgb(63, 225, 225);
+  margin-left: 70%;
+  position: absolute;
+  padding: 2%;
+  border-radius: 1.1rem; */
+}
+@media all and (min-width: 1030px)  {
+  .menuBar{display: none;}
+}
 @media all and (min-width: 501px) and (max-width: 1030px) {
   .main_nav {
     height: 14vh;

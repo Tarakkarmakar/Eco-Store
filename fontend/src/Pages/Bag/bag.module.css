@@ -3,11 +3,12 @@
   flex-direction: row;
   width: 90%;
   margin: auto;
+  padding: 5%;
 }
 .left_product_list {
   width: 70%;
 
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
@@ -16,11 +17,43 @@
   height: 40vh;
 }
 .right_total_product {
-  height: 70vh;
-  width: 20%;
-  background-color: white;
+  height: 47vh;
+  padding: 1%;
+  width: 25%;
+  display: grid;
+  border-top-left-radius: 1.2rem;
+  border-bottom-right-radius: 1.2rem;
+  background-color: rgb(47, 211, 192);
+grid-template-columns: repeat(1 ,1fr);
+  
 }
+.right_total_product>div{
+  display: flex;
 
+}
+.right_total_product>div>ul{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.right_total_product>div>ul>li{
+  display: flex;
+  
+}
+.right_total_product>div>ul>li>h3{
+  margin-right: 20%;
+}
+.sec_div{
+ border-bottom:   1px solid black;
+}
+.third_div{
+  justify-content: center;
+  align-items: center;
+}
+.last_div{
+  margin-top: 15%;
+  justify-content: center;
+}
 @media all and (min-width: 701px) and (max-width: 1030px) {
   .left_product_list {
     width: 70%;
@@ -30,26 +63,57 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }
+  .right_total_product {
+width: 43%;
+margin-left: 10%;
+  }
+.main_div{
+  padding: 1%;
+}
 }
 
 @media all and (min-width: 400px) and (max-width: 701px) {
   .left_product_list {
-    width: 70%;
+    width: 95%;
 
     background-color: white;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
   }
+  .main_div {
+    flex-direction: column;
+    padding: 1%;
+  }
+  .right_total_product{
+width: 260px;
+margin-top: 5vh;
+align-self: flex-end;
+
+  }
+
+
 }
 
 @media all and (min-width: 220px) and (max-width: 399px) {
   .left_product_list {
-    width: 70%;
-
+    width: 80%;
+margin: auto;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1.2rem;
+  }
+  .main_div {
+    flex-direction: column;
+    padding: 1%;
+  }
+  .right_total_product{
+width: 180px;
+height: 40vh;
+margin-top: 5vh;
+align-self:center;
+margin-bottom: 2vh;
+
   }
 }

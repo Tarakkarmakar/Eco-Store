@@ -54,10 +54,10 @@ export const AutoSignIn = (email) => (dispatch) => {
         dispatch({ type: SIGNIN_FAILURE });
         console.log(r.data);
       }
-      console.log(email);
+      
     })
     .catch((e) => {
-      console.log(email);
+     
       dispatch({ type: SIGNIN_FAILURE });
       console.log("error Login");
     });
