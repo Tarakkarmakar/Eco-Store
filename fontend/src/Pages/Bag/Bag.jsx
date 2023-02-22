@@ -31,21 +31,19 @@ const location=useLocation()
  
       setUserToken(localStorage.getItem("email"));
       dispatch(getUserBagProduct(userToken));
-    
-
-      const total_temp = product.reduce((total, item) => total + item.price, 0)
-      if(total_temp<400){
-      setDeliveryPrice(40)
+  
       
-      setTotalPrice(total_temp+deliveryPrice)
-      }else{
-        setTotalPrice(0)
-        setTotalPrice(total_temp)
-      }
+      
+     
 
-  }, []);
+  }, [isAuth]);
+  const total_temp = product.reduce((total, item) => total + item.price, 0)
+    if(total_temp<400){
 
-console.log(location)
+      setDeliveryPrice(40)
+      total_temp+=40
+    }
+console.log(total_temp)
   return (
     <div className={bag.main_div}>
       <div className={bag.left_product_list}>
@@ -59,11 +57,11 @@ console.log(location)
       </div>
       <div className={bag.right_total_product}>
        
-        <div>
+        <div className={bag.first_div}>
           <ul>
             {product.map((ele)=>{
 return(
-  <li><h3>{ele.brand}....</h3> <h3>{ele.price}</h3></li>
+  <li><h3>{ele.brand}....</h3> <h2>Rs.{ele.price}</h2></li>
 )
 
             })}
@@ -71,26 +69,26 @@ return(
             
           </ul>
         </div>
-<div>
+<div className={bag.sec_div}>
   <ul>
-    <li><h3>GST %</h3> <h3>RS.0</h3> </li>
-    <li><h3>Delivery fee</h3> <h3>{deliveryPrice}</h3></li>
+    <li><h3>GST %    &nbsp; &nbsp; &nbsp;</h3> <h2>RS.0</h2> </li>
+    <li><h3>Delivery fee &nbsp; &nbsp;</h3> <h3>Rs.{deliveryPrice}</h3></li>
 
   </ul>
 
   
   </div>
-<div>
+<div className={bag.third_div}>
   <ul>
     <li>
-      <h1>Total </h1> <h2>{totalPrice}</h2>
+      <h3>Total  &nbsp;</h3> <h2>RS.{total_temp}</h2>
     </li>
   </ul>
   
 </div>
 
 
-<div>
+<div className={bag.last_div}>
 <Button  colorScheme='pink' variant='solid'>
    Place order
   </Button>
