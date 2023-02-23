@@ -100,4 +100,5 @@ const getUserBagProduct=(email)=>(dispatch)=>{
     });
 }
 
+
 export { getProducts,getSingleData,getUserBagProduct , getProductsKitchen,getProductsFashion,getProductsPlants };

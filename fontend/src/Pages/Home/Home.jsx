@@ -38,6 +38,7 @@ const Home = () => {
   const kitchen_product = [];
   const plants_product = [];
   const fashion_product = [];
+  if(prod.length>0){
   prod.map((ele) => {
     if (ele.category == "kitchen") {
       kitchen_product.push(ele);
@@ -55,8 +56,7 @@ const Home = () => {
       fashion_product.push(ele);
     }
   });
-  useEffect(() => {}, []);
-
+  }
   // const prod = useSelector((store) => store.rootReducer.Allproducts.products);
 
   useEffect(() => {
