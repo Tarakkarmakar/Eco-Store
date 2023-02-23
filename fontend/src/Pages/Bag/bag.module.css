@@ -17,13 +17,15 @@
   height: 40vh;
 }
 .right_total_product {
-  height: 47vh;
+  border: 3px solid green;
+  height: 55vh;
   padding: 1%;
-  width: 25%;
+  width: 37%;
   display: grid;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-top-left-radius: 1.2rem;
   border-bottom-right-radius: 1.2rem;
-  background-color: rgb(47, 211, 192);
+  background-color: rgb(219, 234, 232);
 grid-template-columns: repeat(1 ,1fr);
   
 }
@@ -54,6 +56,17 @@ grid-template-columns: repeat(1 ,1fr);
   margin-top: 15%;
   justify-content: center;
 }
+.gst_price{
+  margin-left: 18%;
+}
+
+
+.modalheader{
+  font-size: 1.3rem;
+  display: block;
+  margin: auto;
+  font-weight: 670;
+}
 @media all and (min-width: 701px) and (max-width: 1030px) {
   .left_product_list {
     width: 70%;
@@ -64,7 +77,8 @@ grid-template-columns: repeat(1 ,1fr);
     gap: 1.2rem;
   }
   .right_total_product {
-width: 43%;
+width: 50%;
+height: 45vh;
 margin-left: 10%;
   }
 .main_div{
@@ -89,11 +103,12 @@ margin-left: 10%;
 width: 260px;
 margin-top: 5vh;
 align-self: flex-end;
-
+height: 40vh;
   }
 
 
 }
+
 
 @media all and (min-width: 220px) and (max-width: 399px) {
   .left_product_list {
