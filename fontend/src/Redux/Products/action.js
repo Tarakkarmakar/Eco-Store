@@ -99,6 +99,20 @@ const getUserBagProduct=(email)=>(dispatch)=>{
       console.log("error product");
     });
 }
+const getDataBytitle = (search) =>(dispatch)=> {
+  dispatch(getProductsRequest());
+  axios
+    .get(`${process.env.REACT_APP_API}/customerproducts?search=${search}`)
+    .then((r) => {
+      dispatch(getProductsSuccess(r.data));
+    }).catch((e) => {
+      dispatch(getProductssError());
+      console.log("error product");
+    });
+};
+
+
+
 
 
 export { getProducts,getSingleData,getUserBagProduct , getProductsKitchen,getProductsFashion,getProductsPlants };

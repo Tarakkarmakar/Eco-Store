@@ -55,13 +55,12 @@ const Bag = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [placedOrder, setPlacedOrder] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const btnRef = useRef();
-
+const [UPI,setUPI]=useState("")
   const [otp, setOtp] = useState("");
   const [userOtp, setUserOtp] = useState("");
   const [payment, setPayment] = useState(false);
@@ -69,6 +68,7 @@ const Bag = () => {
   const [loader, setLoader] = useState(false);
   const [otpBox, setOtpBox] = useState(false);
   const cancelRef = useRef();
+  const [orderPlaced,setOrderPlaced]=useState(false)
   ////Address state///
   const [locality, setLocality] = useState("");
 
@@ -119,11 +119,13 @@ const Bag = () => {
     setTotalPrice(total_temp)
   }, [isAuth]);
 
-  ////total product calculation//
   
 
 
+const handleOrderPlace=()=>{
 
+  setOrderPlaced(true)
+}
   
 
 
@@ -170,22 +172,41 @@ const Bag = () => {
   };
   ///OTP genration--//
   const handleGenerateOTP = () => {
-    setOtp(generateOTP());
-    if (otp) {
-      toast({
-        title: `Your OTP is ${otp}`,
-        // description: "",
-        position: "top",
-        status: "success",
-        duration: 10000,
-        isClosable: true,
-      });
+   if(UPI.length>6){
+    setOpenModal(!openModal);
+    setOtpBox(true);
 
-      setOpenModal(!openModal);
-      setOtpBox(true);
-    }
+
+    setOtp(generateOTP());
+   }
+else{
+  toast({
+    title: `please enter a valid UPi`,
+    // description: "",
+    position: "top",
+    status: "success",
+    duration: 2000,
+    isClosable: true,
+  });
+}
+      
+      
   };
-  console.log("user -OTp", userOtp);
+
+  useEffect(()=>{
+    if(otp>0){
+    toast({
+      title: `Your OTP is ${otp}`,
+      // description: "",
+      position: "top",
+      status: "success",
+      duration: 10000,
+      isClosable: true,
+    });
+  }
+
+  },[otp])
+  // console.log("user -OTp", userOtp);
 
   const cancelPayment = () => {
     setOtpBox(false);
@@ -194,10 +215,12 @@ const Bag = () => {
 
     setUserOtp("");
   };
-  const procedPayment = () => {
-    setLoader(true);
 
-    if (otp == userOtp) {
+
+  const procedAndOrder = () => {
+    setLoader(true);
+if(+userOtp>0){
+    if (otp == +userOtp) {
       setPayment(true);
 
       toast({
@@ -208,15 +231,29 @@ const Bag = () => {
         duration: 1000,
         isClosable: true,
       });
+     
+    }else{
+      toast({
+        title: `OTP is inccorect `,
+        // description: "",
+        position: "top",
+        status: "failure",
+        duration: 1000,
+        isClosable: true,
+      });
+setLoader(false)
+      return
     }
+    console.log(otp,+userOtp,payment)
+  }
+ 
     const email = JSON.parse(localStorage.getItem("email"));
     const userDetails = JSON.parse(localStorage.getItem("userDetails"));
     const userID = userDetails._id;
-    const addres = `Locality:${locality}District:${district}
-State:${state}Landmark:${landmark}
-pincode:${pincode}Mobile:${mobile}`;
-    let count = 0;
-
+    const addres = `Locality:${locality},District:${district},
+State:${state},Landmark:${landmark},
+Pincode:${pincode},Mobile:${mobile}`;
+  
     product.map((ele) => {
       const order = {
         ProductId: ele._id,
@@ -228,7 +265,7 @@ pincode:${pincode}Mobile:${mobile}`;
         payment: payment,
         price: ele.price,
         email: email,
-        orderedBy: userID,
+        OrderedBy: userID,
         Mobile: mobile,
         count: ele.count,
         address: addres,
@@ -237,39 +274,60 @@ pincode:${pincode}Mobile:${mobile}`;
 
       console.log(order);
 
-      // axios.post(`${process.env.REACT_APP_API}/orders/create`,order)
-      //   .then((r)=>{
-      //   count++
-      // console.log(r)
-      //    }).catch((e)=>{
-      //     toast({
-      //       title: `Failed to order `,
-      //      // description: "",
-      //     position:'top',
-      //       status: 'success',
-      //        duration: 1000,
-      //        isClosable: true,
+      axios.post(`${process.env.REACT_APP_API}/orders/create`,order)
+        .then((r)=>{
+      handleOrderPlace()
+      console.log(r)
+         }).catch((e)=>{
+          toast({
+            title: `Failed to order `,
+           // description: "",
+          position:'top',
+            status: 'success',
+             duration: 1000,
+             isClosable: true,
 
-      //      })
-      //      console.log(e)
-      //   })
+           })
+          
+        })
     });
+// console.log(count)
 
-    // if(count==product.length){
-    //   toast({
-    //     title: `Order placed succesfull `,
-    //     // description: "",
-    //     position:'top',
-    //     status: 'success',
-    //     duration: 1000,
-    //     isClosable: true,
+console.log(orderPlaced)
+    if(orderPlaced){
+//for deleting cart product of user //
+     product.map((product)=>{
 
-    //   })
-    // }
+axios.delete(`${process.env.REACT_APP_API}/cart/delete/${product._id}`)
+.then((r)=>{
+  console.log(r)
+})
+.catch((e)=>{
+  console.log(e)
+})
+     })
+
+      toast({
+        title: `Order placed succesfull `,
+        // description: "",
+        position:'top',
+        status: 'success',
+        duration: 4000,
+        isClosable: true,
+
+      })
+
+      navigate("/")
+
+
+  }
   };
 
   return (
-    <>
+<>
+  
+    
+   
       <div className={bag.main_div}>
         <div className={bag.left_product_list}>
           {product.length > 0 ? (
@@ -277,9 +335,13 @@ pincode:${pincode}Mobile:${mobile}`;
               return <ProductCard ele={ele} key={ele._id} />;
             })
           ) : (
-            <h1>You have not added any product !</h1>
+          <div className={bag.noProduct}>
+
+            <Heading margin="auto">You have not added any product !</Heading>
+            </div>
           )}
         </div>
+      {product.length>0 && 
         <div className={bag.right_total_product}>
           <div className={bag.first_div}>
             <ul>
@@ -387,8 +449,11 @@ pincode:${pincode}Mobile:${mobile}`;
           </div>
 
           <h3> @ free Delivery on order over 400</h3>
-        </div>
-      </div>
+        </div> }
+
+      </div>  
+      
+
       <Modal isOpen={openModal} onClose={() => setOpenModal(!openModal)}>
         <ModalOverlay />
         <ModalContent>
@@ -399,7 +464,7 @@ pincode:${pincode}Mobile:${mobile}`;
             <Box>
               <FormLabel>Pay Via UPI</FormLabel>
               <InputGroup size="md">
-                <Input pr="4.5rem" placeholder="Eg;- 8945553710@upi" />
+                <Input pr="4.5rem" placeholder="Eg;- 8945553710@upi" value={UPI} onChange={(e)=>setUPI(e.target.value)} />
                 <InputRightElement width="4.5rem">
                   <Button h="1.75rem" size="sm" onClick={handleGenerateOTP}>
                     Verify
@@ -457,7 +522,7 @@ pincode:${pincode}Mobile:${mobile}`;
               <Button ref={cancelRef} onClick={cancelPayment}>
                 Cancel
               </Button>
-              <Button colorScheme="red" ml={3} onClick={procedPayment}>
+              <Button colorScheme="red" ml={3} onClick={procedAndOrder}>
                 complete Payment
               </Button>
             </AlertDialogFooter>
@@ -465,7 +530,12 @@ pincode:${pincode}Mobile:${mobile}`;
         </AlertDialogOverlay>
       </AlertDialog>
     </>
+              
+            
+  
+              
   );
+              
 };
 
 export default Bag;

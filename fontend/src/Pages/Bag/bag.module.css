@@ -60,7 +60,11 @@ grid-template-columns: repeat(1 ,1fr);
   margin-left: 18%;
 }
 
-
+.noProduct{
+ 
+  margin: auto;
+ 
+}
 .modalheader{
   font-size: 1.3rem;
   display: block;

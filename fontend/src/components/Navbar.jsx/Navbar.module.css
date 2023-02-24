@@ -81,7 +81,25 @@
   width: 29%;
   margin-left: 15%;
 }
-
+.suggestionBox{
+  width: 23%;
+  z-index: 3000;
+  margin-top: -4vh;
+  border: 1px solid green;
+ position: fixed;
+  background-color: rgb(255, 255, 255);
+margin-left: 25%;
+height: 24vh;
+  border-bottom-left-radius: 1.1rem;
+  border-bottom-right-radius:1.1rem;
+}
+.suggestionBox>ul>li{
+  border-bottom: 1px solid rgb(218, 193, 193);
+  padding: 2%;
+}
+.suggestionBox>ul>li:hover{
+  cursor: pointer;
+}
 .nav_account {
   width: 27%;
   border-radius: 80%;
