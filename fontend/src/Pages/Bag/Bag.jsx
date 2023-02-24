@@ -1,6 +1,14 @@
 import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Box,
   Button,
   CardHeader,
+  Checkbox,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -8,7 +16,12 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  FormLabel,
+  Heading,
+  HStack,
   Input,
+  InputGroup,
+  InputRightElement,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -18,6 +31,8 @@ import {
   NumberInput,
   NumberInputField,
   others,
+  PinInput,
+  PinInputField,
   useDisclosure,
   useToast,
  
@@ -30,19 +45,31 @@ import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { getUserBagProduct } from "../../Redux/Products/action";
 import bag from "./bag.module.css";
-
+function generateOTP() {
+  let min = 1000;
+  let max = 9999;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 const Bag = () => {
   const location = useLocation();
   const [userToken, setUserToken] = useState(localStorage.getItem("email"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+ 
   const [placedOrder, setPlacedOrder] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
   const [deliveryPrice, setDeliveryPrice] = useState(0);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast=useToast()
   const btnRef = useRef();
+
+  const [otp, setOtp] = useState('');
+  const [userOtp,setUserOtp]=useState('')
+  const [payment,setPayment]=useState(false)
   const [openModal,setOpenModal] = useState();
+
+  const [otpBox,setOtpBox]=useState(false)
+  const cancelRef =useRef()
   ////Address state///
 const [locality,setLocality]=useState("")
 
@@ -138,7 +165,35 @@ const handleProced=()=>{
   console.log(locality,district,state,landmark,pincode,mobile)
 
 }
+///OTP genration--//
+const  handleGenerateOTP=()=>{
+  setOtp(generateOTP())
+if(otp){
+  toast({
+    title: `Your OTP is ${otp}`,
+    // description: "",
+    position:'top',
+    status: 'success',
+    duration: 10000,
+    isClosable: true,
+    
+  })
 
+setOpenModal(!openModal)
+  setOtpBox(true)
+}
+ 
+
+  
+  
+}
+console.log("user -OTp",userOtp)
+const cancelPayment=()=>{
+setOtpBox(false)
+setOtp('')
+setUserOtp('')
+
+}
   const procedPayment = () => {
     axios.post(`${process.env.REACT_APP_API}/orders/create`);
   };
@@ -185,10 +240,13 @@ const handleProced=()=>{
               <h3>Total &nbsp;</h3> <h2>RS.{total_temp}</h2>
             </li>
             <br />
+            <li><h3>Deliery Expected :- 7-10 Days</h3></li>
           </ul>
         </div>
 
         <div className={bag.last_div}>
+
+
           <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
             Place order
           </Button>
@@ -235,6 +293,26 @@ const handleProced=()=>{
   <h1 className={bag.modalheader}>Choose Payment</h1>
     <ModalCloseButton />
     <ModalBody>
+  <FormLabel>Toal;-    INR.  {total_temp}</FormLabel>
+       <Box >
+        <FormLabel>Pay Via UPI</FormLabel>
+       <InputGroup size='md'>
+      <Input
+        pr='4.5rem'
+      
+        placeholder='Eg;- 8945553710@upi'
+      />
+      <InputRightElement width='4.5rem'>
+        <Button h='1.75rem'  size='sm' onClick={handleGenerateOTP} >
+        Verify 
+        </Button>
+      </InputRightElement>
+    </InputGroup>
+    <Checkbox colorScheme='green' marginTop="1.5rem" >
+ Cash on Delivery
+  </Checkbox>
+
+       </Box>
  
     </ModalBody>
 
@@ -246,6 +324,41 @@ const handleProced=()=>{
     </ModalFooter>
   </ModalContent>
 </Modal>
+
+
+<AlertDialog
+        isOpen={otpBox}
+        leastDestructiveRef={cancelRef}
+        onClose={()=>setOtpBox(!otpBox)}
+      >
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+             Enter OTP
+            </AlertDialogHeader>
+
+            <AlertDialogBody marginBottom="1.5rem">
+              You are 100% Secure with us
+            </AlertDialogBody>
+            <HStack marginLeft="27%">
+  <PinInput otp mask size='lg' value={userOtp}  onChange={(value)=>setUserOtp(value)}>
+    <PinInputField  />
+    <PinInputField />
+    <PinInputField  />
+    <PinInputField  />
+  </PinInput>
+</HStack>
+            <AlertDialogFooter>
+              <Button ref={cancelRef} onClick={cancelPayment}>
+                Cancel
+              </Button>
+              <Button colorScheme='red'  ml={3}>
+                complete Payment
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
     </>
   );
 };
