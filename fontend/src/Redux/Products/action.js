@@ -21,8 +21,6 @@ const getProductssError = () => {
   };
 };
 const getProducts = (params) => (dispatch) => {
-
-
   dispatch(getProductsRequest());
   return axios
     .get(`${process.env.REACT_APP_API}/customerproducts`, params)
@@ -72,47 +70,52 @@ const getProductsPlants = (params) => (dispatch) => {
     });
 };
 
-
-const getSingleData = (id) =>(dispatch)=> {
+const getSingleData = (id) => (dispatch) => {
   dispatch(getProductsRequest());
   axios
     .get(`${process.env.REACT_APP_API}/customerproducts/single/${id}`)
     .then((r) => {
       dispatch(getProductsSuccess(r.data));
-    }).catch((e) => {
+    })
+    .catch((e) => {
       dispatch(getProductssError());
       console.log("error product");
     });
 };
 
-const getUserBagProduct=(email)=>(dispatch)=>{
-
+const getUserBagProduct = (email) => (dispatch) => {
   dispatch(getProductsRequest());
   axios
-    .get(`${process.env.REACT_APP_API}/cart`,{
-      headers:{"Authorization":email}
+    .get(`${process.env.REACT_APP_API}/cart`, {
+      headers: { Authorization: email },
     })
     .then((r) => {
       dispatch(getProductsSuccess(r.data));
-    }).catch((e) => {
+    })
+    .catch((e) => {
       dispatch(getProductssError());
       console.log("error product");
     });
-}
-const getDataBytitle = (search) =>(dispatch)=> {
+};
+const getDataBytitle = (search) => (dispatch) => {
   dispatch(getProductsRequest());
   axios
     .get(`${process.env.REACT_APP_API}/customerproducts?search=${search}`)
     .then((r) => {
       dispatch(getProductsSuccess(r.data));
-    }).catch((e) => {
+    })
+    .catch((e) => {
       dispatch(getProductssError());
       console.log("error product");
     });
 };
 
-
-
-
-
-export { getProducts,getDataBytitle ,getSingleData,getUserBagProduct , getProductsKitchen,getProductsFashion,getProductsPlants };
+export {
+  getProducts,
+  getDataBytitle,
+  getSingleData,
+  getUserBagProduct,
+  getProductsKitchen,
+  getProductsFashion,
+  getProductsPlants,
+};

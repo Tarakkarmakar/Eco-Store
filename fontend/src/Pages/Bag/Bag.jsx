@@ -104,9 +104,12 @@ const [UPI,setUPI]=useState("")
     dispatch(getUserBagProduct(userToken));
 
 
+   
+  }, [isAuth]);
+
+  useEffect(()=>{
+
     let total_temp = 0;
-
-
     if (product.length > 0) {
       total_temp = product.reduce((total, item) => total + item.price, 0);
   
@@ -117,9 +120,8 @@ const [UPI,setUPI]=useState("")
     }
 
     setTotalPrice(total_temp)
-  }, [isAuth]);
 
-  
+  },[product])
 
 
 const handleOrderPlace=()=>{
@@ -254,7 +256,7 @@ setLoader(false)
 State:${state},Landmark:${landmark},
 Pincode:${pincode},Mobile:${mobile}`;
   
-    product.map((ele) => {
+  const orderPromises=  product.map((ele) => {
       const order = {
         ProductId: ele._id,
         title: ele.title,
@@ -274,23 +276,31 @@ Pincode:${pincode},Mobile:${mobile}`;
 
       console.log(order);
 
-      axios.post(`${process.env.REACT_APP_API}/orders/create`,order)
-        .then((r)=>{
-      handleOrderPlace()
-      console.log(r)
-         }).catch((e)=>{
-          toast({
-            title: `Failed to order `,
-           // description: "",
-          position:'top',
-            status: 'success',
-             duration: 1000,
-             isClosable: true,
-
-           })
-          
-        })
+      return axios.post(`${process.env.REACT_APP_API}/orders/create`, order);
     });
+    
+    Promise.all(orderPromises)
+      .then(() => {
+        toast({
+          title: `Order is Successfull `,
+          // description: "",
+          position: "top",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        console.log("All orders have been posted.");
+      })
+      .catch((e) => {
+        toast({
+          title: `Failed to order `,
+          // description: "",
+          position: "top",
+          status: "success",
+          duration: 1000,
+          isClosable: true,
+        });
+      });;
 // console.log(count)
 
 console.log(orderPlaced)
@@ -329,7 +339,7 @@ axios.delete(`${process.env.REACT_APP_API}/cart/delete/${product._id}`)
     
    
       <div className={bag.main_div}>
-        <div className={bag.left_product_list}>
+        <div className={product.length<=3? bag.singleRow :bag.left_product_list} >
           {product.length > 0 ? (
             product.map((ele) => {
               return <ProductCard ele={ele} key={ele._id} />;
@@ -485,7 +495,7 @@ axios.delete(`${process.env.REACT_APP_API}/cart/delete/${product._id}`)
             >
               Cancel
             </Button>
-            <Button colorScheme="blue">Procced Next</Button>
+            <Button colorScheme="blue" onClick={procedAndOrder}>Procced Next</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

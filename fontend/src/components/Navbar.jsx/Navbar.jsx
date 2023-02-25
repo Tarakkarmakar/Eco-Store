@@ -16,7 +16,7 @@ import {
 import logo from "../../images/logo.png";
 import bag from "../../images/bag.png";
 
-import debounce from 'lodash/debounce';
+import debounce from "lodash/debounce";
 import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
 import account from "../../images/account.jpg";
 import { json, useNavigate, useSearchParams } from "react-router-dom";
@@ -27,12 +27,12 @@ import { SIGNIN_FAILURE } from "../../Redux/SignUpReducer/actionTypes";
 import axios from "axios";
 const Navbar = () => {
   const dispatch = useDispatch();
-  const [intialSuggestion,setInitialSuggestion]=useState([])
+  const [intialSuggestion, setInitialSuggestion] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [aboutUser, setAboutUser] = useState(false);
-  const [menuState,setMenuState]=useState(false)
+  const [menuState, setMenuState] = useState(false);
 
   const toast = useToast();
   let [user, setUser] = useState(
@@ -51,7 +51,6 @@ const Navbar = () => {
   const gotoPartner = () => {
     navigate("/partner");
   };
- 
 
   const { isAuth, isError, isLoading } = useSelector((state) => {
     return {
@@ -63,9 +62,8 @@ const Navbar = () => {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("email")));
-    if(user!="" || user!==null){
-
-      dispatch(AutoSignIn(user))
+    if (user != "" || user !== null) {
+      dispatch(AutoSignIn(user));
     }
   }, []);
 
@@ -74,12 +72,10 @@ const Navbar = () => {
     setAboutUser(!aboutUser);
   };
 
-  
-
   const logOut = () => {
     localStorage.setItem("email", null);
     setUser(JSON.parse(localStorage.getItem("email")));
-    localStorage.setItem("userDetails",null)
+    localStorage.setItem("userDetails", null);
     setAboutUser(!aboutUser);
 
     dispatch(AutoSignIn("empty"));
@@ -97,53 +93,39 @@ const Navbar = () => {
   };
 
   const fetchProducts = debounce(async (search) => {
-   
-    try{
-
-axios.get(`${process.env.REACT_APP_API}/customerproducts?search=${search}`)
-.then((r)=>{
-  setSuggestions(r.data);
-
-})
-    }catch{
-       alert("Unable to search at this time")
+    try {
+      axios
+        .get(`${process.env.REACT_APP_API}/customerproducts?search=${search}`)
+        .then((r) => {
+          setSuggestions(r.data);
+        });
+    } catch {
+      alert("Unable to search at this time");
     }
-  
-    
-  }, 500)
+  }, 500);
 
-  useEffect(()=>{
-if(search){
-  fetchProducts(search);
-}
-    
+  useEffect(() => {
+    if (search) {
+      fetchProducts(search);
+    }
+  }, [search]);
 
-  },[search])
+  useEffect(() => {
+    if (search == "") {
+      setSuggestions([]);
+      fetchProducts("$");
+    }
+  }, [search]);
 
-useEffect(()=>{
-if(search==""){
+  const handleSerach = (e) => {
+    setSearch(e.target.value);
+  };
 
-  setSuggestions([])
-  fetchProducts("$");
-}
-
-},[search])
-
-const handleSerach=(e)=>{
-
-  setSearch(e.target.value)
-
- 
- 
-}
-
-const handleClickSuggestion=(search)=>{
-
-  navigate(`/serach/${search}`)
-
-}
-console.log(search)
-console.log(suggestions)
+  const handleClickSuggestion = (search) => {
+    navigate(`/serach/${search}`);
+  };
+  console.log(search);
+  console.log(suggestions);
   return (
     <>
       <div className={css.main_nav}>
@@ -156,36 +138,45 @@ console.log(suggestions)
 
         <div className={css.nav_serach_section}>
           <InputGroup size="md">
-            <Input pr="4.5rem" focusBorderColor="lime" background="white" value={search} onChange={handleSerach}  />
+            <Input
+              pr="4.5rem"
+              focusBorderColor="lime"
+              background="white"
+              value={search}
+              onChange={handleSerach}
+            />
             <InputRightElement width="2.5rem">
-              <Button h="1.75rem" size="sm" onClick={()=>handleClickSuggestion(search)}>
+              <Button
+                h="1.75rem"
+                size="sm"
+                onClick={() => handleClickSuggestion(search)}
+              >
                 <Search2Icon />
               </Button>
             </InputRightElement>
           </InputGroup>
 
-
-          {suggestions.length>0 && suggestions.length<9 &&
-
-<div className={css.suggestionBox}>
- <ul>
-
-   {suggestions.map((ele,index)=>{
-     if(index<6){
-const maxWords = 4;
-const words = ele.title.split(' ').slice(0, maxWords);
-const trimmedTitle = words.join(' ');
-     return(
-       <li key={ele._id} onClick={()=>handleClickSuggestion(ele.title)}>{trimmedTitle}</li>
-     )
-
-     }
-   })}
- 
-  </ul>
-
- </div>
-}
+          {suggestions.length > 0 && suggestions.length < 9 && (
+            <div className={css.suggestionBox}>
+              <ul>
+                {suggestions.map((ele, index) => {
+                  if (index < 6) {
+                    const maxWords = 4;
+                    const words = ele.title.split(" ").slice(0, maxWords);
+                    const trimmedTitle = words.join(" ");
+                    return (
+                      <li
+                        key={ele._id}
+                        onClick={() => handleClickSuggestion(ele.title)}
+                      >
+                        {trimmedTitle}
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </div>
+          )}
         </div>
 
         <div className={css.nav_right_section}>
@@ -213,19 +204,27 @@ const trimmedTitle = words.join(' ');
         </div>
 
         <div className={css.nav_hamberger}>
-
-
-        <Menu>
-  <MenuButton><HamburgerIcon h="2.3rem" w="2.2rem" onClick={()=>setMenuState(!menuState)}/></MenuButton>
-  <MenuList>
-    <MenuItem >{isAuth ? <h3>{user }</h3> :<h3 onClick={goSignup}>Login/SignUp</h3>}</MenuItem>
-    <MenuItem  onClick={gotoBag}>Bag</MenuItem>
-    <MenuItem onClick={gotoPartner}>Become a Partner</MenuItem>
-    <MenuItem>Help</MenuItem>
-  </MenuList>
-</Menu>
-       
-         
+          <Menu>
+            <MenuButton>
+              <HamburgerIcon
+                h="2.3rem"
+                w="2.2rem"
+                onClick={() => setMenuState(!menuState)}
+              />
+            </MenuButton>
+            <MenuList>
+              <MenuItem>
+                {isAuth ? (
+                  <h3>{user}</h3>
+                ) : (
+                  <h3 onClick={goSignup}>Login/SignUp</h3>
+                )}
+              </MenuItem>
+              <MenuItem onClick={gotoBag}>Bag</MenuItem>
+              <MenuItem onClick={gotoPartner}>Become a Partner</MenuItem>
+              <MenuItem>Help</MenuItem>
+            </MenuList>
+          </Menu>
         </div>
       </div>
       {aboutUser && logedUser ? (
@@ -237,8 +236,6 @@ const trimmedTitle = words.join(' ');
       ) : (
         ""
       )}
-
-       
     </>
   );
 };
