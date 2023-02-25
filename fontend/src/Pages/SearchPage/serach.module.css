@@ -1,12 +1,6 @@
-.main_container {
-  display: flex;
-}
-.left_filter_box {
-  width: 36%;
-}
 .Eco_kitchen_box {
   display: grid;
-  padding: 1%;
+  padding: 5%;
   background-color: white;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;

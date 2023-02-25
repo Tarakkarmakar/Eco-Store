@@ -9,6 +9,7 @@ import Login from "./login/Login";
 
 import Partner from "./Partner/Partner";
 import Plants from "./plants/Plants";
+import Search from "./SearchPage/Search";
 import SignUp from "./Signup/SignUp";
 import SinglePage from "./singleProduct/singlePage";
 
@@ -23,7 +24,7 @@ const MainRoute = () => {
       <Route path="/plants" element={<Plants />} />
       <Route path="/explore" element={<Explore />} />
       <Route path="/singlePage/:id" element={<SinglePage/>} />
-
+    <Route path="/serach/:title" element={<Search />} />
       <Route path="/bag" element={<PrivateRoute ><Bag /></PrivateRoute>} />
       <Route path="/partner" element={<Partner />} />
     </Routes>

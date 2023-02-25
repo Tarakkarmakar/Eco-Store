@@ -55,18 +55,22 @@
 
   font-style: initial;
   color: rgb(255, 255, 255);
+
+  padding: 0.5%;
+  padding-right: 0.5%;
+}
+.home_heading_box>h2{
   font-weight: 700;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  padding: 0.5%;
-  padding-right: 0.5%;
+    margin-bottom:1vh;
 }
 
 .home_right_slider {
   border: 2px solid black;
   background-image: url(../../images/slide_1.jpg);
   width: 80%;
-  height: 60vh;
+  height: 65vh;
   border-radius: 1.2rem;
   margin-left: 8%;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -95,6 +99,8 @@
 
 .Eco_kitchen {
   font-size: 1.1rem;
+  text-align: center;
+
   /* margin-right: 80%; */
   width: 120px;
   margin-top: 3vh;

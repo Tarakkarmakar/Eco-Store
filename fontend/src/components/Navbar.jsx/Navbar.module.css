@@ -81,7 +81,25 @@
   width: 29%;
   margin-left: 15%;
 }
+.suggestionBox{
+ width: 22%;
+  z-index: 3000;
+  margin-top: 1vh;
+  border: 1px solid green;
+ position: fixed;
+  background-color: rgb(255, 255, 255);
 
+height: 28vh;
+  border-bottom-left-radius: 1.1rem;
+  border-bottom-right-radius:1.1rem;
+}
+.suggestionBox>ul>li{
+  border-bottom: 1px solid rgb(218, 193, 193);
+  padding: 2%;
+}
+.suggestionBox>ul>li:hover{
+  cursor: pointer;
+}
 .nav_account {
   width: 27%;
   border-radius: 80%;
@@ -128,6 +146,9 @@
     width: 110%;
     font-size: 102%;
       }
+      .suggestionBox{
+        width: 27%;
+      }
 }
 @media all and (min-width: 0px) and (max-width: 500px) {
   .nav_hamberger {
@@ -150,6 +171,9 @@
 margin-top: 34%;
 height: 20%;
 font-size: 72%;
+  }
+  .suggestionBox{
+    width: 50%;
   }
 }
 

@@ -33,7 +33,7 @@ const Explore= () => {
 
      
 
-        <div className={exp.right_product_box}>
+        <div className={exp.Eco_kitchen_box }>
         {prod.map((ele) => {
             
                 return <ProductCard ele={ele} key={ele._id} />;

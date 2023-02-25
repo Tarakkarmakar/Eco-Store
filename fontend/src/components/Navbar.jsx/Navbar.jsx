@@ -15,18 +15,25 @@ import {
 } from "@chakra-ui/react";
 import logo from "../../images/logo.png";
 import bag from "../../images/bag.png";
+
+import debounce from 'lodash/debounce';
 import { HamburgerIcon, Search2Icon } from "@chakra-ui/icons";
 import account from "../../images/account.jpg";
-import { json, useNavigate } from "react-router-dom";
+import { json, useNavigate, useSearchParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AutoSignIn } from "../../Redux/SignUpReducer/action";
 import { SIGNIN_FAILURE } from "../../Redux/SignUpReducer/actionTypes";
+import axios from "axios";
 const Navbar = () => {
   const dispatch = useDispatch();
+  const [intialSuggestion,setInitialSuggestion]=useState([])
+  const [suggestions, setSuggestions] = useState([]);
+  const [search, setSearch] = useState("")
   const navigate = useNavigate();
   const [aboutUser, setAboutUser] = useState(false);
   const [menuState,setMenuState]=useState(false)
+
   const toast = useToast();
   let [user, setUser] = useState(
     JSON.parse(localStorage.getItem("email")) || ""
@@ -89,6 +96,54 @@ const Navbar = () => {
     window.location.reload();
   };
 
+  const fetchProducts = debounce(async (search) => {
+   
+    try{
+
+axios.get(`${process.env.REACT_APP_API}/customerproducts?search=${search}`)
+.then((r)=>{
+  setSuggestions(r.data);
+
+})
+    }catch{
+       alert("Unable to search at this time")
+    }
+  
+    
+  }, 500)
+
+  useEffect(()=>{
+if(search){
+  fetchProducts(search);
+}
+    
+
+  },[search])
+
+useEffect(()=>{
+if(search==""){
+
+  setSuggestions([])
+  fetchProducts("$");
+}
+
+},[search])
+
+const handleSerach=(e)=>{
+
+  setSearch(e.target.value)
+
+ 
+ 
+}
+
+const handleClickSuggestion=(search)=>{
+
+  navigate(`/serach/${search}`)
+
+}
+console.log(search)
+console.log(suggestions)
   return (
     <>
       <div className={css.main_nav}>
@@ -101,13 +156,36 @@ const Navbar = () => {
 
         <div className={css.nav_serach_section}>
           <InputGroup size="md">
-            <Input pr="4.5rem" focusBorderColor="lime" background="white" />
+            <Input pr="4.5rem" focusBorderColor="lime" background="white" value={search} onChange={handleSerach}  />
             <InputRightElement width="2.5rem">
-              <Button h="1.75rem" size="sm">
+              <Button h="1.75rem" size="sm" onClick={()=>handleClickSuggestion(search)}>
                 <Search2Icon />
               </Button>
             </InputRightElement>
           </InputGroup>
+
+
+          {suggestions.length>0 && suggestions.length<9 &&
+
+<div className={css.suggestionBox}>
+ <ul>
+
+   {suggestions.map((ele,index)=>{
+     if(index<6){
+const maxWords = 4;
+const words = ele.title.split(' ').slice(0, maxWords);
+const trimmedTitle = words.join(' ');
+     return(
+       <li key={ele._id} onClick={()=>handleClickSuggestion(ele.title)}>{trimmedTitle}</li>
+     )
+
+     }
+   })}
+ 
+  </ul>
+
+ </div>
+}
         </div>
 
         <div className={css.nav_right_section}>
@@ -160,7 +238,6 @@ const Navbar = () => {
         ""
       )}
 
-    
        
     </>
   );

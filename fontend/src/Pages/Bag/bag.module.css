@@ -18,7 +18,7 @@
 }
 .right_total_product {
   border: 3px solid green;
-  height: 55vh;
+  height: 65vh;
   padding: 1%;
   width: 37%;
   display: grid;
@@ -60,7 +60,11 @@ grid-template-columns: repeat(1 ,1fr);
   margin-left: 18%;
 }
 
-
+.noProduct{
+ 
+  margin: auto;
+ 
+}
 .modalheader{
   font-size: 1.3rem;
   display: block;
