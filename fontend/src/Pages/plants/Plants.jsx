@@ -43,7 +43,7 @@ const Plants = () => {
         <Filter one="Mphmi" two="eco-life" three="urban plant" />
       </div>
 
-      <div className={plants.right_product_box}>
+      <div className={plants.Eco_kitchen_box}>
         {prod.map((ele) => {
           return <ProductCard ele={ele} key={ele._id} />;
         })}

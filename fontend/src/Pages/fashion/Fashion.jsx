@@ -41,7 +41,7 @@ return (
 
       <div className={fashion.left_filter_box}><Filter one="N&T fashion" two="Dennis Lingo" three="Allen soly" /></div>
 
-      <div className={fashion.right_product_box}>
+      <div className={fashion.Eco_kitchen_box}>
       {prod.map((ele) => {
           
               return <ProductCard ele={ele} key={ele._id} />;

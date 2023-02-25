@@ -1,0 +1,42 @@
+.Eco_kitchen_box {
+  display: grid;
+  padding: 5%;
+  background-color: white;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+@media all and (min-width: 701px) and (max-width: 1030px) {
+  .Eco_kitchen_box {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media all and (min-width: 400px) and (max-width: 701px) {
+  .Eco_kitchen_box {
+    margin-left: 3%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media all and (min-width: 220px) and (max-width: 399px) {
+  .Eco_kitchen_box {
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 2%;
+    height: 70%;
+  }
+}
+
+@media all and (min-width: 0px) and (max-width: 220px) {
+  .Eco_kitchen_box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Eco_kitchen_box > div {
+    height: 20vh;
+    width: 80%;
+    margin: auto;
+  }
+}

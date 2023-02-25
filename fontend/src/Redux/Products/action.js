@@ -115,4 +115,4 @@ const getDataBytitle = (search) =>(dispatch)=> {
 
 
 
-export { getProducts,getSingleData,getUserBagProduct , getProductsKitchen,getProductsFashion,getProductsPlants };
+export { getProducts,getDataBytitle ,getSingleData,getUserBagProduct , getProductsKitchen,getProductsFashion,getProductsPlants };

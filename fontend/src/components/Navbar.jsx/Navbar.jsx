@@ -113,26 +113,37 @@ axios.get(`${process.env.REACT_APP_API}/customerproducts?search=${search}`)
   }, 500)
 
   useEffect(()=>{
-if(search!==""){
+if(search){
   fetchProducts(search);
 }
     
 
   },[search])
+
+useEffect(()=>{
+if(search==""){
+
+  setSuggestions([])
+  fetchProducts("$");
+}
+
+},[search])
+
 const handleSerach=(e)=>{
 
   setSearch(e.target.value)
 
  
-  console.log(suggestions)
+ 
 }
 
 const handleClickSuggestion=(search)=>{
 
   navigate(`/serach/${search}`)
-  setSearch("")
-}
 
+}
+console.log(search)
+console.log(suggestions)
   return (
     <>
       <div className={css.main_nav}>
@@ -152,6 +163,29 @@ const handleClickSuggestion=(search)=>{
               </Button>
             </InputRightElement>
           </InputGroup>
+
+
+          {suggestions.length>0 && suggestions.length<9 &&
+
+<div className={css.suggestionBox}>
+ <ul>
+
+   {suggestions.map((ele,index)=>{
+     if(index<6){
+const maxWords = 4;
+const words = ele.title.split(' ').slice(0, maxWords);
+const trimmedTitle = words.join(' ');
+     return(
+       <li key={ele._id} onClick={()=>handleClickSuggestion(ele.title)}>{trimmedTitle}</li>
+     )
+
+     }
+   })}
+ 
+  </ul>
+
+ </div>
+}
         </div>
 
         <div className={css.nav_right_section}>
@@ -203,27 +237,7 @@ const handleClickSuggestion=(search)=>{
       ) : (
         ""
       )}
-{suggestions.length>0 &&
 
- <div className={css.suggestionBox}>
-  <ul>
-
-    {suggestions.map((ele,index)=>{
-      if(index<6){
- const maxWords = 4;
- const words = ele.title.split(' ').slice(0, maxWords);
- const trimmedTitle = words.join(' ');
-      return(
-        <li key={ele._id} onClick={()=>handleClickSuggestion(ele.title)}>{trimmedTitle}</li>
-      )
-
-      }
-    })}
-  
-   </ul>
-
-  </div>
-}
        
     </>
   );

@@ -40,7 +40,7 @@ const Kitchen = () => {
 
         <div className={kitchen.left_filter_box}><Filter one="beco" two="sanhya dale" three="wood nature" /></div>
 
-        <div className={kitchen.right_product_box}>
+        <div className={kitchen.Eco_kitchen_box}>
         {prod.map((ele) => {
             
                 return <ProductCard ele={ele} key={ele._id} />;
