@@ -1,7 +1,7 @@
 const mongoose=require("mongoose")
 
 const OrderSchema=mongoose.Schema({
-    _id:String,
+    ProductId:String,
     title:String,
     image:String,
     brand:String,
@@ -10,10 +10,11 @@ const OrderSchema=mongoose.Schema({
     payment:Boolean,
     price:Number,
    email:String,
+   OrderedBy:String,
    Mobile:Number,
    count:Number,
    address:String,
-   deliverStatus:Boolean,
+   deliverStatus:Boolean
 
 })
 
