@@ -23,9 +23,16 @@ const MainRoute = () => {
       <Route path="/fashion" element={<Fashion />} />
       <Route path="/plants" element={<Plants />} />
       <Route path="/explore" element={<Explore />} />
-      <Route path="/singlePage/:id" element={<SinglePage/>} />
-    <Route path="/serach/:title" element={<Search />} />
-      <Route path="/bag" element={<PrivateRoute ><Bag /></PrivateRoute>} />
+      <Route path="/singlePage/:id" element={<SinglePage />} />
+      <Route path="/serach/:title" element={<Search />} />
+      <Route
+        path="/bag"
+        element={
+          <PrivateRoute>
+            <Bag />
+          </PrivateRoute>
+        }
+      />
       <Route path="/partner" element={<Partner />} />
     </Routes>
   );

@@ -96,7 +96,7 @@ export default function Login() {
         console.log(isError);
       }
     }
-  }, [isAuth, isError,isLoading]);
+  }, [isAuth, isError, isLoading]);
   console.log(isError, isAuth);
   const SendSignInRequest = (e) => {
     e.preventDefault();
@@ -156,16 +156,14 @@ export default function Login() {
       );
       setLoginRequest(!loginRequest);
     }
-
-
   };
-  useEffect(()=>{
-    if(isAuth){
-   navigate("/")
+  useEffect(() => {
+    if (isAuth) {
+      navigate("/");
     }
-  })
-const location=useLocation()
-  console.log(location)
+  });
+  const location = useLocation();
+  console.log(location);
   return (
     <>
       <Flex color="black" alignItems="center">

@@ -3,18 +3,24 @@
   flex-direction: row;
   width: 90%;
   margin: auto;
-  padding: 5%;
+  padding: 3%;
 }
 .left_product_list {
   width: 70%;
-
+padding: 2%;
   background-color: rgb(255, 255, 255);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.2rem;
 }
-.left_product_list > div {
-  height: 40vh;
+.singleRow{
+  width: 70%;
+height: 25vh;
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  padding: 2%;
 }
 .right_total_product {
   border: 3px solid green;
@@ -88,12 +94,31 @@ margin-left: 10%;
 .main_div{
   padding: 1%;
 }
+.singleRow{
+
+  width: 70%;
+height: 80vh;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
 }
 
 @media all and (min-width: 400px) and (max-width: 701px) {
   .left_product_list {
     width: 95%;
 
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+
+  .singleRow{
+
+    width: 95%;
+  height: 80vh;
     background-color: white;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -106,15 +131,16 @@ margin-left: 10%;
   .right_total_product{
 width: 260px;
 margin-top: 5vh;
-align-self: flex-end;
+align-self: center;
 height: 40vh;
+margin-left: 0px;
   }
 
 
 }
 
 
-@media all and (min-width: 220px) and (max-width: 399px) {
+@media all and (min-width: 0px) and (max-width: 399px) {
   .left_product_list {
     width: 80%;
 margin: auto;
@@ -134,5 +160,15 @@ margin-top: 5vh;
 align-self:center;
 margin-bottom: 2vh;
 
+  }
+
+  .singleRow{
+
+    width: 95%;
+  height: 7233330vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
   }
 }
