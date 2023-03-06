@@ -1,8 +1,10 @@
 .footer_main_con{
 display: grid;
 padding: 1%;
+background-color:  #228B22;
 grid-template-columns: 1fr 1fr 1fr 1fr ;
 gap: 2%;
+margin-top: 5vh;
 
 }
 .cities_headline{

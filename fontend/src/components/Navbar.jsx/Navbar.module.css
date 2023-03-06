@@ -1,20 +1,21 @@
 .main_nav {
   position: sticky;
   top: 0;
-  border: 1px solid black;
-  height: 16vh;
+  background-color: #228B22;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  height: 13vh;
   display: flex;
   width: 100%;
   align-items: center;
   z-index: 1000;
-  background-color: green;
+
   padding-left: 5%;
-  padding-right: 2%;
+ 
 }
 .nav_left_section {
   background-color: #ffffff;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   box-shadow: 1px 8px 2px 0px rgba(17, 242, 21, 1);
 
   border-radius: 50%;
@@ -42,6 +43,7 @@
   margin-left: 4%;
 
   width: 50%;
+  height: 100%;
   justify-content: space-between;
 }
 .nav_right_list {
@@ -138,8 +140,8 @@
     margin-left: 40%;
   }
   .nav_left_section {
-    height: 50px;
-    width: 78px;
+    height: 55px;
+    width: 59px;
   }
   .nav_company_name {
     margin-top: 34%;
@@ -149,6 +151,10 @@
   }
   .suggestionBox {
     width: 27%;
+  }
+  .nav_logo {
+    width: 60%;
+    cursor: pointer;
   }
 }
 @media all and (min-width: 0px) and (max-width: 500px) {

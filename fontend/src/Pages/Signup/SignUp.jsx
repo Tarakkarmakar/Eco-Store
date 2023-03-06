@@ -99,7 +99,7 @@ export default function SignUp() {
         isClosable: true,
       });
 
-    }else if(!isEmail(email)) {
+    }else if(!isEmail(email)){
       
       toaster({
         title: `Please Enter a valid email !`,
@@ -141,7 +141,7 @@ else{
   const handleClick = () => setShow(!show);
   return (
     <>
-      {isLoading ? (
+      {/* {isLoading ? (
         <Flex justify="center" mt={"5"}>
           <Spinner
             thickness="5px"
@@ -151,7 +151,7 @@ else{
             size="lg"
           />
         </Flex>
-      ) : (
+      ) : ( */}
         <>
           <Flex marginTop="1rem" color="black" alignItems="center">
             <ArrowBackIcon color="blue" boxSize={9} onClick={GotoHome} />
@@ -292,7 +292,7 @@ else{
             </FormControl>
           </Flex>
         </>
-      )}
+      {/* )} */}
     </>
   );
 }

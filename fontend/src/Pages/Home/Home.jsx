@@ -52,7 +52,7 @@ const Home = () => {
   });
 
   prod.map((ele) => {
-    if (ele.category == "plants") {
+    if (ele.category == "fashion") {
       fashion_product.push(ele);
     }
   });
@@ -84,28 +84,9 @@ const Home = () => {
   } else {
     return (
       <div className={csshome.home_main}>
-        <div className={csshome.home_left_bar}>
-          <div className={csshome.type_of_product} onClick={gotoPlants}>
-            Plants
-          </div>
-          <div className={csshome.type_of_product} onClick={gotoFashion}>
-            Fashion
-          </div>
-          <div className={csshome.type_of_product} onClick={gotoKitchen}>
-            Kitchen
-          </div>
 
-          <div className={csshome.type_of_product} onClick={gotoExplore}>
-            Explore
-          </div>
-        </div>
-
-        <div className={csshome.home_right_main}>
-          <div className={csshome.home_heading_box}>
-            <h2>Shop Natural products with No chemicals</h2>
-
-            {/* //for small screen */}
-            <div className={csshome.typebox_small}>
+             {/* //for small screen */}
+             <div className={csshome.typebox_small}>
               <div
                 className={csshome.type_of_product_small}
                 onClick={gotoPlants}
@@ -132,6 +113,27 @@ const Home = () => {
                 Explore
               </div>
             </div>
+        <div className={csshome.home_left_bar}>
+          <div className={csshome.type_of_product} onClick={gotoPlants}>
+            Plants
+          </div>
+          <div className={csshome.type_of_product} onClick={gotoFashion}>
+            Fashion
+          </div>
+          <div className={csshome.type_of_product} onClick={gotoKitchen}>
+            Kitchen
+          </div>
+
+          <div className={csshome.type_of_product} onClick={gotoExplore}>
+            Explore
+          </div>
+        </div>
+
+        <div className={csshome.home_right_main}>
+          <div className={csshome.home_heading_box}>
+            <h2>Shop Natural products with No chemicals</h2>
+
+       
           </div>
           {/* ------- */}
           <br />
@@ -157,7 +159,7 @@ const Home = () => {
           <br />
           <span className={csshome.Eco_kitchen}>Eco-fashion</span>
           <div className={csshome.Eco_kitchen_box}>
-            {plants_product.map((ele, index) => {
+            {fashion_product.map((ele, index) => {
               if (index < 5) {
                 return <ProductCard ele={ele} key={ele._id} />;
               }

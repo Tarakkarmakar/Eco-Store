@@ -26,13 +26,13 @@ export const Loginfunction = (data) => (dispatch) => {
   axios
     .post(`${process.env.REACT_APP_API}/customerUser/login`, data)
     .then((response) => {
-      if (!response.data.email || response.data == "wrong crediential") {
+      if (response.data == "wrong crediential") {
         dispatch({ type: SIGNIN_FAILURE });
-      } else if (response.data.email) {
+      } else if (response.data.email || response.data == "login successfull") {
         dispatch({ type: SIGNIN_SUCCESS, payload: response.data.email });
         localStorage.setItem("email", null);
         localStorage.setItem("email", JSON.stringify(response.data.email));
-      }
+      }else 
       console.log(response);
     })
     .catch((e) => {

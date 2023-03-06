@@ -1,6 +1,6 @@
 .filter_section {
     border: 1px solid rgb(196, 172, 172);
-  
+  background-color: white;
     margin-top: 4vh;
     position: sticky;
   }

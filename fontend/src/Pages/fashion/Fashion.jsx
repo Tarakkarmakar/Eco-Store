@@ -6,6 +6,7 @@ import fashion from "./fashion.module.css"
 
 import { getProducts, getProductsFashion, getProductsKitchen } from "../../Redux/Products/action";
 import ProductCard from "../../components/ProductCard/ProductCard";
+import { Spinner } from "@chakra-ui/react";
 
 
 const Fashion = () => {
@@ -39,9 +40,16 @@ return (
   <div className={fashion.main_container}>
 
 
-      <div className={fashion.left_filter_box}><Filter one="N&T fashion" two="Dennis Lingo" three="Allen soly" /></div>
+      <div className={fashion.left_filter_box}><Filter one="N&T Fashion"  two="Dennis Lingo" three="Allen Soly" four="Nature Care" /></div>
 
-      <div className={fashion.Eco_kitchen_box}>
+
+  {isLoading ? <div className={fashion.spinner}> <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='green.500'
+  size='xl'
+/>  </div>:  <div className={fashion.Eco_kitchen_box}>
       {prod.map((ele) => {
           
               return <ProductCard ele={ele} key={ele._id} />;
@@ -51,7 +59,8 @@ return (
       }
       )}
           </div>
- 
+ }
+     
     
   </div>
 )

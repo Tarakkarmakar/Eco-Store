@@ -27,6 +27,14 @@
 }
 .typebox_small {
   display: none;
+
+  padding-left: 8%;
+  padding-right: 8%;
+  font-size: 16px;
+  position: fixed;
+  justify-content: space-between;
+  background-image: url(../../images/bark.png);
+  align-items: center;
 }
 .type_of_product_small {
   font-size: 18px;
@@ -59,11 +67,11 @@
   padding: 0.5%;
   padding-right: 0.5%;
 }
-.home_heading_box>h2{
+.home_heading_box > h2 {
   font-weight: 700;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    margin-bottom:1vh;
+  margin-bottom: 1vh;
 }
 
 .home_right_slider {
@@ -113,12 +121,19 @@
 }
 .Eco_kitchen_box {
   display: grid;
-  background-color: white;
+  
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
+
 .home_left_bar > div {
   height: 14%;
+}
+
+@media all and (min-width: 1031px) {
+  .Eco_kitchen_box > div {
+    height: 48vh;
+  }
 }
 @media all and (min-width: 1031px) and (max-width: 1300px) {
   .home_left_bar {
@@ -133,6 +148,9 @@
   }
   .type_of_product {
     font-size: 17px;
+  }
+  .Eco_kitchen_box > div {
+    height: 46vh;
   }
 }
 
@@ -169,10 +187,10 @@ hi */
     display: flex;
     width: 105%;
     height: 60px;
-    margin-left: -18%;
+
     padding-left: 8%;
     padding-right: 8%;
-    margin-top: 77vh;
+
     display: flex;
     font-size: 16px;
     position: fixed;
@@ -244,6 +262,9 @@ hi */
   .type_of_product {
     font-size: 20px;
   }
+  .Eco_kitchen_box > div {
+    height: 45vh;
+  }
 }
 @media all and (min-width: 220px) and (max-width: 399px) {
   .home_right_main {
@@ -254,17 +275,6 @@ hi */
     display: flex;
     width: 105%;
     height: 60px;
-    margin-left: -18%;
-    padding-left: 8%;
-    padding-right: 8%;
-    margin-top: 81vh;
-    display: flex;
-    font-size: 16px;
-    position: fixed;
-    background-color: aqua;
-    justify-content: space-between;
-    background-image: url(../../images/bark.png);
-    align-items: center;
   }
   .type_of_product_small {
     cursor: pointer;
@@ -314,6 +324,9 @@ hi */
     width: 100%;
     gap: 2%;
     height: 70%;
+  }
+  .Eco_kitchen_box > div {
+    height: 33vh;
   }
 
   .Eco_kitchen {
@@ -404,6 +417,11 @@ hi */
   }
   .Eco_kitchen_box {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .Eco_kitchen_box > div {
+    height: 45vh;
+    width: 80%;
+    margin: auto;
   }
 }
 @media all and (min-width: 280px) and (max-width: 400px) {

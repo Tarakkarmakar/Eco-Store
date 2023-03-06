@@ -82,7 +82,7 @@ export default function Login() {
         setEmail("");
         setPassword("");
       } else {
-        if (isError) {
+        if (isError){
           toast({
             title: `Invalid User Details!!!`,
             status: "error",
@@ -159,7 +159,7 @@ export default function Login() {
   };
   useEffect(() => {
     if (isAuth) {
-      navigate("/");
+      // navigate("/");
     }
   });
   const location = useLocation();
@@ -169,7 +169,7 @@ export default function Login() {
       <Flex color="black" alignItems="center">
         <ArrowBackIcon color="blue" boxSize={8} onClick={GotoHome} />
       </Flex>
-
+{/* 
       {isLoading ? (
         <Flex justify="center" h="30vh" mt={"5"}>
           <Spinner
@@ -180,7 +180,7 @@ export default function Login() {
             size="lg"
           />
         </Flex>
-      ) : (
+      ) : ( */}
         <Flex
           background="white"
           justify="center"
@@ -292,7 +292,8 @@ export default function Login() {
             </Box>
           </FormControl>
         </Flex>
-      )}
+      {/* )
+      } */}
     </>
   );
 }

@@ -82,7 +82,7 @@ const Navbar = () => {
 
     setloggedUser(false);
     toast({
-      title: `Log out successfull`,
+      title: `Your are Logged out !!`,
       status: "success",
       duration: 1500,
       position: "top",
@@ -129,6 +129,8 @@ const Navbar = () => {
   return (
     <>
       <div className={css.main_nav}>
+
+        
         <div className={css.nav_left_section} onClick={gotoHome}>
           <img className={css.nav_logo} src={logo} alt="" />
         </div>
@@ -223,6 +225,7 @@ const Navbar = () => {
               <MenuItem onClick={gotoBag}>Bag</MenuItem>
               <MenuItem onClick={gotoPartner}>Become a Partner</MenuItem>
               <MenuItem>Help</MenuItem>
+              <MenuItem onClick={logOut}>Log out</MenuItem>
             </MenuList>
           </Menu>
         </div>

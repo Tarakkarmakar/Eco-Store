@@ -40,7 +40,7 @@ const Plants = () => {
   return (
     <div className={plants.main_container}>
       <div className={plants.left_filter_box}>
-        <Filter one="Mphmi" two="eco-life" three="urban plant" />
+        <Filter one="Mphmi" two="eco-life" three="urban plant" four="U life" />
       </div>
 
       <div className={plants.Eco_kitchen_box}>
