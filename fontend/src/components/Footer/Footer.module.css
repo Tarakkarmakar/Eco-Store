@@ -31,3 +31,10 @@ li{
 grid-template-columns: repeat( 2, 1fr);
     }
 }
+
+
+@media all and (min-width: 0px) and (max-width:767px) {
+    .footer_main_con{
+margin-bottom: 116px;
+    }
+}

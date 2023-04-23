@@ -1,6 +1,8 @@
 .home_main {
   display: flex;
   margin: auto;
+  padding: 1%;
+  margin-top: 5vh;
 }
 .home_left_bar {
   height: 40vh;
@@ -25,47 +27,30 @@
 
   background-image: url(../../images/bark.png);
 }
-.typebox_small {
-  display: none;
 
-  padding-left: 8%;
-  padding-right: 8%;
-  font-size: 16px;
-  position: fixed;
-  justify-content: space-between;
-  background-image: url(../../images/bark.png);
-  align-items: center;
-}
-.type_of_product_small {
-  font-size: 18px;
-}
-.type_of_product_small:hover {
-  cursor: pointer;
-}
-.type_of_product:hover {
-  cursor: pointer;
-}
 .home_right_main {
   width: 78%;
   display: flex;
   flex-direction: column;
   margin-left: 20%;
+  align-items: center;
 }
 .home_heading_box {
-  width: 49%;
+  width: 40vw;
   height: 5vh;
-  font-size: 18px;
+  font-size: 1.3rem;
   margin: auto;
   border-radius: 2.1rem;
-  background-image: url(../../images/bark.png);
+  /* background-image: url(../../images/bark.png); */
   margin-bottom: 1%;
   margin-top: 2%;
 
   font-style: initial;
-  color: rgb(255, 255, 255);
+  color: #103044;
+font-weight: 400;
+  padding: 2px 3px 5px 5px;
 
-  padding: 0.5%;
-  padding-right: 0.5%;
+ 
 }
 .home_heading_box > h2 {
   font-weight: 700;
@@ -106,18 +91,21 @@
 }
 
 .Eco_kitchen {
-  font-size: 1.1rem;
+  margin-right: 85%;
+  font-size: 1.2rem;
   text-align: center;
-
+  font-style: initial;
+  color: #1c3a4d;
+font-weight: 400;
   /* margin-right: 80%; */
-  width: 120px;
+  width: 130px;
   margin-top: 3vh;
   margin-bottom: 1vh;
   padding-left: 1%;
   padding-right: 1%;
   border-radius: 1.3rem;
-  color: aliceblue;
-  background-image: url(../../images/bark.png);
+
+
 }
 .Eco_kitchen_box {
   display: grid;
@@ -134,6 +122,12 @@
   .Eco_kitchen_box > div {
     height: 48vh;
   }
+
+  .home_right_slider {
+    height: 360px;
+    width: 600px;
+  }
+  
 }
 @media all and (min-width: 1031px) and (max-width: 1300px) {
   .home_left_bar {
@@ -152,11 +146,14 @@
   .Eco_kitchen_box > div {
     height: 46vh;
   }
+  .home_right_slider {
+    height: 480px;
+  }
 }
 
 @media all and (min-width: 701px) and (max-width: 1030px) {
   .home_right_slider {
-    height: 40vh;
+    height: 270px;
   }
   .Eco_kitchen {
     margin-right: 85%;
@@ -171,7 +168,7 @@
   }
   .home_right_main {
     width: 76%;
-    margin-left: 23%;
+    margin-left: 26%;
   }
   .Eco_kitchen_box {
     grid-template-columns: repeat(3, 1fr);
@@ -266,11 +263,16 @@ hi */
     height: 45vh;
   }
 }
-@media all and (min-width: 220px) and (max-width: 399px) {
+@media all and (min-width: 601px) and (max-width: 767px) {
   .home_right_main {
-    margin: auto;
     width: 100%;
+    margin-left: 0%;
   }
+
+}
+
+@media all and (min-width: 220px) and (max-width: 399px) {
+
   .typebox_small {
     display: flex;
     width: 105%;

@@ -109,6 +109,7 @@
 }
 .nav_hamberger {
   display: none;
+margin-right: 1vw;
 }
 .menuBar {
   display: block;

@@ -110,6 +110,8 @@ const Navbar = () => {
     }
   }, [search]);
 
+  console.log(search)
+
   useEffect(() => {
     if (search == "") {
       setSuggestions([]);
@@ -124,8 +126,8 @@ const Navbar = () => {
   const handleClickSuggestion = (search) => {
     navigate(`/serach/${search}`);
   };
-  console.log(search);
-  console.log(suggestions);
+  // console.log(search);
+  // console.log(suggestions);
   return (
     <>
       <div className={css.main_nav}>

@@ -7,7 +7,9 @@ const ProductCard = ({ ele }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [id, setId] = useState("");
   const { image, title, Rating, RatingCount, price, off, _id } = ele;
-
+  const maxWords = 7;
+  const words = ele.title.split(" ").slice(0, maxWords);
+  const trimmedTitle = words.join(" ");
   const navigate = useNavigate();
 
   const sendIDtoParam = (id) => {
@@ -28,7 +30,7 @@ const ProductCard = ({ ele }) => {
         <img src={image} alt="" />
       </div>
       <div className={card.product_description_box}>
-        <h3 className={card.product_title}>{title}</h3>
+        <h3 className={card.product_title}>{trimmedTitle }.....</h3>
 
         <div className={card.rating_box}>
           {Rating >= 1 ? <StarIcon border="black" color="#FFA500" /> : <p></p>}

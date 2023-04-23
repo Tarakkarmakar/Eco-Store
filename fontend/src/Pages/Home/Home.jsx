@@ -8,6 +8,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { Skeleton, SkeletonCircle, SkeletonText, Box } from "@chakra-ui/react";
 import { getProducts } from "../../Redux/Products/action";
+import Sidebar from "../../components/Homesidebar/sidebar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,40 +23,40 @@ const Home = () => {
     };
   });
 
-  const gotoKitchen = () => {
-    navigate("/kitchen");
-  };
+  // const gotoKitchen = () => {
+  //   navigate("/kitchen");
+  // };
 
-  const gotoFashion = () => {
-    navigate("/fashion");
-  };
-  const gotoPlants = () => {
-    navigate("/plants");
-  };
-  const gotoExplore = () => {
-    navigate("/explore");
-  };
+  // const gotoFashion = () => {
+  //   navigate("/fashion");
+  // };
+  // const gotoPlants = () => {
+  //   navigate("/plants");
+  // };
+  // const gotoExplore = () => {
+  //   navigate("/explore");
+  // };
   const kitchen_product = [];
   const plants_product = [];
   const fashion_product = [];
-  if(prod.length>0){
-  prod.map((ele) => {
-    if (ele.category == "kitchen") {
-      kitchen_product.push(ele);
-    }
-  });
+  if (prod.length > 0) {
+    prod.map((ele) => {
+      if (ele.category == "kitchen") {
+        kitchen_product.push(ele);
+      }
+    });
 
-  prod.map((ele) => {
-    if (ele.category == "plants") {
-      plants_product.push(ele);
-    }
-  });
+    prod.map((ele) => {
+      if (ele.category == "plants") {
+        plants_product.push(ele);
+      }
+    });
 
-  prod.map((ele) => {
-    if (ele.category == "fashion") {
-      fashion_product.push(ele);
-    }
-  });
+    prod.map((ele) => {
+      if (ele.category == "fashion") {
+        fashion_product.push(ele);
+      }
+    });
   }
   // const prod = useSelector((store) => store.rootReducer.Allproducts.products);
 
@@ -84,56 +85,11 @@ const Home = () => {
   } else {
     return (
       <div className={csshome.home_main}>
-
-             {/* //for small screen */}
-             <div className={csshome.typebox_small}>
-              <div
-                className={csshome.type_of_product_small}
-                onClick={gotoPlants}
-              >
-                Plants
-              </div>
-              <div
-                className={csshome.type_of_product_small}
-                onClick={gotoFashion}
-              >
-                Fashion
-              </div>
-              <div
-                className={csshome.type_of_product_small}
-                onClick={gotoKitchen}
-              >
-                Kitchen
-              </div>
-
-              <div
-                className={csshome.type_of_product_small}
-                onClick={gotoExplore}
-              >
-                Explore
-              </div>
-            </div>
-        <div className={csshome.home_left_bar}>
-          <div className={csshome.type_of_product} onClick={gotoPlants}>
-            Plants
-          </div>
-          <div className={csshome.type_of_product} onClick={gotoFashion}>
-            Fashion
-          </div>
-          <div className={csshome.type_of_product} onClick={gotoKitchen}>
-            Kitchen
-          </div>
-
-          <div className={csshome.type_of_product} onClick={gotoExplore}>
-            Explore
-          </div>
-        </div>
+        <Sidebar />
 
         <div className={csshome.home_right_main}>
           <div className={csshome.home_heading_box}>
-            <h2>Shop Natural products with No chemicals</h2>
-
-       
+            <h2>Shop Natural Products With No Chemicals</h2>
           </div>
           {/* ------- */}
           <br />
@@ -172,3 +128,47 @@ const Home = () => {
 };
 
 export default Home;
+{
+  /* <div className={csshome.typebox_small}>
+<div
+  className={csshome.type_of_product_small}
+  onClick={gotoPlants}
+>
+  Plants
+</div>
+<div
+  className={csshome.type_of_product_small}
+  onClick={gotoFashion}
+>
+  Fashion
+</div>
+<div
+  className={csshome.type_of_product_small}
+  onClick={gotoKitchen}
+>
+  Kitchen
+</div>
+
+<div
+  className={csshome.type_of_product_small}
+  onClick={gotoExplore}
+>
+  Explore
+</div>
+</div>
+<div className={csshome.home_left_bar}>
+<div className={csshome.type_of_product} onClick={gotoPlants}>
+Plants
+</div>
+<div className={csshome.type_of_product} onClick={gotoFashion}>
+Fashion
+</div>
+<div className={csshome.type_of_product} onClick={gotoKitchen}>
+Kitchen
+</div>
+
+<div className={csshome.type_of_product} onClick={gotoExplore}>
+Explore
+</div>
+</div> */
+}
