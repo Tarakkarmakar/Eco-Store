@@ -186,11 +186,25 @@ const Navbar = () => {
         <div className={css.nav_right_section}>
           <ul className={css.nav_right_list}>
             {isAuth ? (
-              <li onClick={openDiv}>
+
+
+
+<li className="dropdown">
+
+<li  className=" btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <Avatar>
                   <AvatarBadge boxSize="1.25em" bg="blue.500" />
                 </Avatar>
               </li>
+<ul className="dropdown-menu">
+<li><a className="dropdown-item" >{user}</a></li>
+<li><a className="dropdown-item" >My orders</a></li>
+<li><a className="dropdown-item" > <button onClick={logOut}>log out</button></a></li>
+</ul>
+       
+ 
+</li>
+            
             ) : (
               <li onClick={goSignup}>
                 {" "}
@@ -219,28 +233,26 @@ const Navbar = () => {
             <MenuList>
               <MenuItem>
                 {isAuth ? (
-                  <h3>{user}</h3>
+
+<h2>Hi</h2>
+                  
                 ) : (
                   <h3 onClick={goSignup}>Login/SignUp</h3>
                 )}
               </MenuItem>
               <MenuItem onClick={gotoBag}>Bag</MenuItem>
+              <MenuItem>My orders</MenuItem>
               <MenuItem onClick={gotoPartner}>Become a Partner</MenuItem>
               <MenuItem>Help</MenuItem>
-              <MenuItem onClick={logOut}>Log out</MenuItem>
+
+              {isAuth?    <MenuItem onClick={logOut}>Log out</MenuItem>
+              : <MenuItem onClick={goSignup}>Login/Sign Up</MenuItem>}
+           
             </MenuList>
           </Menu>
         </div>
       </div>
-      {aboutUser && logedUser ? (
-        <div className={css.opendiv}>
-          <h2>{user}</h2>
-
-          <button onClick={logOut}>log out</button>
-        </div>
-      ) : (
-        ""
-      )}
+    
     </>
   );
 };
