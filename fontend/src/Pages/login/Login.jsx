@@ -59,15 +59,11 @@ export default function Login() {
   const [loginRequest, setLoginRequest] = useState(false);
   const [isLargerThan992] = useMediaQuery("(min-width: 992px)");
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 500);
-  // }, []);
+
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   useEffect(() => {
-    if (email !== "" && password !== "") {
+  
       if (isAuth) {
         toast({
           title: `LogIn Successfull`,
@@ -90,12 +86,14 @@ export default function Login() {
             position: "top",
             isClosable: true,
           });
+
+          localStorage.setItem("email", null);
         }
         setEmail("");
         setPassword("");
         console.log(isError);
       }
-    }
+    
   }, [isAuth, isError, isLoading]);
   console.log(isError, isAuth);
   const SendSignInRequest = (e) => {
@@ -157,13 +155,8 @@ export default function Login() {
       setLoginRequest(!loginRequest);
     }
   };
-  useEffect(() => {
-    if (isAuth) {
-      // navigate("/");
-    }
-  });
-  const location = useLocation();
-  console.log(location);
+
+
   return (
     <>
       <Flex color="black" alignItems="center">

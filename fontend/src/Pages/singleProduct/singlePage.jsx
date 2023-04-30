@@ -31,10 +31,19 @@ const toaster = useToast()
     };
   });
 
+
+  const { isAuth, isError} = useSelector((state) => {
+    return {
+      isAuth: state.signUpReducer.isAuth,
+      isError: state.signUpReducer.isError,
+      isLoading: state.signUpReducer.isLoading,
+    };
+  });
+
   console.log(product);
   useEffect(() => {
    dispatch(getSingleData(id));
-    setUserToken(localStorage.getItem("email"))
+  
   }, []);
 
 
@@ -79,7 +88,7 @@ const productAlreadyAdded=()=>{
     }, 2000);
 }
 const addTocart=()=>{
-  if(userToken){
+  if(isAuth){
   console.log(userToken)
 const payload={
   ProductID:product._id,

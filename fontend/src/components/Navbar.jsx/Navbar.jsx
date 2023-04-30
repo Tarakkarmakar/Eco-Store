@@ -62,7 +62,7 @@ const Navbar = () => {
 
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("email")));
-    if (user != "" || user !== null) {
+    if (user != "" || user !== null && isAuth) {
       dispatch(AutoSignIn(user));
     }
   }, []);

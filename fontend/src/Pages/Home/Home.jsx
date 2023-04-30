@@ -95,7 +95,7 @@ const Home = () => {
           <br />
           <div className={csshome.home_right_slider}></div>
 
-          <span className={csshome.Eco_kitchen}>Eco-Kitchen</span>
+          <div className={csshome.Eco_cat_head}><span >Eco-Kitchen</span></div>
           <div className={csshome.Eco_kitchen_box}>
             {kitchen_product.map((ele, index) => {
               if (index < 5) {
@@ -104,7 +104,7 @@ const Home = () => {
             })}
           </div>
           <br />
-          <span className={csshome.Eco_kitchen}>Eco-Plants</span>
+          <div className={csshome.Eco_cat_head}><span >Eco-Plants</span></div>
           <div className={csshome.Eco_kitchen_box}>
             {plants_product.map((ele, index) => {
               if (index < 5) {
@@ -113,7 +113,7 @@ const Home = () => {
             })}
           </div>
           <br />
-          <span className={csshome.Eco_kitchen}>Eco-fashion</span>
+          <div className={csshome.Eco_cat_head}><span >Eco-Fashion</span></div>
           <div className={csshome.Eco_kitchen_box}>
             {fashion_product.map((ele, index) => {
               if (index < 5) {
