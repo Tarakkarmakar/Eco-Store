@@ -125,6 +125,7 @@ const Navbar = () => {
 
   const handleClickSuggestion = (search) => {
     navigate(`/serach/${search}`);
+    setSearch("")
   };
   // console.log(search);
   // console.log(suggestions);
@@ -164,7 +165,7 @@ const Navbar = () => {
             <div className={css.suggestionBox}>
               <ul>
                 {suggestions.map((ele, index) => {
-                  if (index < 6) {
+                  if (index < 5) {
                     const maxWords = 4;
                     const words = ele.title.split(" ").slice(0, maxWords);
                     const trimmedTitle = words.join(" ");
